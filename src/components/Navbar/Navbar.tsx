@@ -1,8 +1,10 @@
-import React from 'react'
+import { GrNotification } from 'react-icons/gr'
+import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md'
+import { BsThreeDots } from 'react-icons/bs'
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className='nav-dashboard'>
       <div className="nav-logo">
         <h1>
           Birdin
@@ -11,24 +13,26 @@ const Navbar = () => {
       <div className="nav-settings">
         <div className="nav-navigation">
           <button>
-            before
+            <MdNavigateBefore/>
           </button>
           <button>
-            next
+            <MdNavigateNext/>
           </button>
         </div>
         <div className="nav-profile">
-          <button className="notifications__btn">
-            <i className="fas fa-bell"></i>
-          </button>
-          <div className="profile__username">
+          <div className="notifications__icon">
+            <GrNotification/>
+          </div>
+          <div className="profile-username">
             <span>Username</span>
           </div>
-          <button className="profile__btn">
-            <i className="fas fa-user"></i>
-          </button>
-          <button className="profile__settings">
-            <i className="fas fa-cog"></i>
+          <div className="profile-avatar">
+            <div className="profile-avatar__container">
+              <img src="https://avatars.githubusercontent.com/u/4257305?v=4" alt="Avatar"/>
+            </div>
+          </div>
+          <button className="profile-settings">
+            <BsThreeDots />
           </button>
         </div>
       </div>

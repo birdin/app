@@ -1,5 +1,6 @@
 import {Route, Routes} from "react-router-dom";
 import Task from './pages/Task';
+import './styles/index.scss';
 
 function App() {
   return (
