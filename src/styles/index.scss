@@ -1,22 +1,6 @@
+@import 'normalize';
 @import 'variables';
-
-.nav-dashboard {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.nav-profile {
-    align-items: center;
-    justify-content: space-between;
-    display: none;
-
-    @media (min-width: $sm) {
-        display: flex;
-    }
-}
-
-.nav-settings {
-    display: flex;
-}
-
+@import 'layout';
+@import 'buttons';
+@import 'navbar';
+@import 'header';

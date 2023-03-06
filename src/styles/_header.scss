@@ -1,0 +1,30 @@
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.project-logo {
+    display: block;
+    width: 65px;
+    border-radius: 10px;
+    overflow: hidden;
+    img {
+        width: 100%;
+    }
+}
+
+.header-statusbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.header-statusbar__item {
+    margin-right: 1rem;
+}
+
+.header-statusbar__tag {
+    font-weight: 500;
+    padding-right: 10px;
+}

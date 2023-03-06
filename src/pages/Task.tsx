@@ -1,10 +1,11 @@
 import React from 'react'
+import { ProjectHeader } from '../components/Header'
 import DashboardLayout from '../layouts/DashboardLayout'
 
 const Task = () => {
   return (
     <DashboardLayout>
-        <div>Task</div>
+        <ProjectHeader/>
     </DashboardLayout>
   )
 }

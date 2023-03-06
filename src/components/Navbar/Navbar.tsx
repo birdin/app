@@ -1,14 +1,19 @@
 import { GrNotification } from 'react-icons/gr'
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md'
 import { BsThreeDots } from 'react-icons/bs'
+import { AiOutlineMenu } from 'react-icons/ai'
+import Logo from '../../assets/logo.svg'
 
 const Navbar = () => {
   return (
-    <nav className='nav-dashboard'>
+    <nav className='nav-dashboard fluid-container'>
       <div className="nav-logo">
-        <h1>
-          Birdin
-        </h1>
+        <img src={Logo} alt="Logo"/>
+      </div>
+      <div className="menu-btn">
+        <button>
+          <AiOutlineMenu />
+        </button>
       </div>
       <div className="nav-settings">
         <div className="nav-navigation">
