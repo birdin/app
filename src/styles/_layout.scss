@@ -6,6 +6,17 @@
     box-sizing: border-box;
 }
 
+.wide-container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+    padding: 0 15px;
+    @media (min-width: $sm) {
+        padding: 0 2rem;
+    }
+}
+
 .container {
     width: 100%;
     padding-right: 15px;

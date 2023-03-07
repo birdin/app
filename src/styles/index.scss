@@ -4,3 +4,20 @@
 @import 'buttons';
 @import 'navbar';
 @import 'header';
+
+@import 'taskboard';
+
+* {
+    font-size: 15px;
+}
+
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+h2 {
+    font-size: 1.6rem;
+    @media (min-width: $sm) {
+        font-size: 2rem;
+    }
+}
