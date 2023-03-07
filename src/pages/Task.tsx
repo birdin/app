@@ -7,7 +7,9 @@ const Task = () => {
   return (
     <DashboardLayout>
         <ProjectHeader/>
-        <Board/>
+        <div className="wide-container fill-container">
+          <Board/>
+        </div>
     </DashboardLayout>
   )
 }

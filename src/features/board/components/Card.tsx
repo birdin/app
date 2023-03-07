@@ -6,9 +6,8 @@ type Props = {
 }
 
 const Card = ({task, index}:Props) => {
-    console.log(task)
   return (
-    <div key={task.id} id={task.id}> Column {task.content}</div>
+    <div key={task.id} id={task.id} className="kanban-card"> Column {task.content}</div>
   )
 }
 

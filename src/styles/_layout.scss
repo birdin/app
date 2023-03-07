@@ -17,6 +17,11 @@
     }
 }
 
+.fill-container {
+    flex: 1 1 auto;
+    overflow-y: hidden;
+}
+
 .container {
     width: 100%;
     padding-right: 15px;

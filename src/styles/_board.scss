@@ -1,0 +1,28 @@
+.task-board {
+    display: flex;
+    gap: 2rem;
+    //justify-content: space-between;
+   //overflow-y: hidden;
+}
+
+.kanban-column {
+    width: 28%;
+    min-width: 300px;
+    max-width: 330px;
+}
+
+.kanban-column__tasks {
+    min-height: 200px;
+    background-color: #F7F7F7;
+    padding: 1rem;
+}
+
+.kanban-card {
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.kanban-card__container {
+    margin-bottom: 1rem;
+}

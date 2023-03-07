@@ -13,15 +13,20 @@ export const initialData = {
         },
         'column-2': {
             id: 'column-2',
-            title: 'In progress',
+            title: 'Today',
             taskIds: [],
         },
         'column-3': {
             id: 'column-3',
+            title: 'In progress',
+            taskIds: [],
+        },
+        'column-4': {
+            id: 'column-4',
             title: 'Done',
             taskIds: [],
         },
     },
     // Facilitate reordering of the columns
-    columnOrder: ['column-1', 'column-2', 'column-3'],
+    columnOrder: ['column-1', 'column-2', 'column-3', 'column-4'],
 };

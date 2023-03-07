@@ -5,7 +5,7 @@
 @import 'navbar';
 @import 'header';
 
-@import 'taskboard';
+@import 'board';
 
 * {
     font-size: 15px;
@@ -20,4 +20,10 @@ h2 {
     @media (min-width: $sm) {
         font-size: 2rem;
     }
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
