@@ -7,7 +7,7 @@ const ProjectHeader = () => {
             <picture className='project-logo'>
                 <img src="https://via.placeholder.com/150" alt="Project logo"/>
             </picture>
-            <h2>Name of project</h2>
+            <h2 className='project-header__title'>Name of project</h2>
         </div>
         <div className="header-statusbar">
             <div className="header-statusbar__item">

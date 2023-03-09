@@ -1,9 +1,9 @@
 export const initialData = {
     tasks: {
-        'task-1': { id: 'task-1', content: 'Take out the garbage' },
-        'task-2': { id: 'task-2', content: 'Watch my favorite show' },
-        'task-3': { id: 'task-3', content: 'Charge my phone' },
-        'task-4': { id: 'task-4', content: 'Cook dinner' },
+        'task-1': { id: 'task-1', name:"Finish new dashboard", content: 'Take out the garbage' },
+        'task-2': { id: 'task-2', name:"Update styles", content: 'Watch my favorite show' },
+        'task-3': { id: 'task-3', name:"Update components", content: 'Charge my phone' },
+        'task-4': { id: 'task-4', name:"Create new template", content: 'Cook dinner' },
     },
     columns: {
         'column-1': {
@@ -25,7 +25,7 @@ export const initialData = {
             id: 'column-4',
             title: 'Done',
             taskIds: [],
-        },
+        }
     },
     // Facilitate reordering of the columns
     columnOrder: ['column-1', 'column-2', 'column-3', 'column-4'],

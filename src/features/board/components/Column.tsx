@@ -9,7 +9,15 @@ type Props = {
 const Column = ({tasks, column}:Props) => {
   return (
     <div className="kanban-column">
-        <h3>{column.title}</h3>
+        <div className="kanban-column__header">
+            <div className={tasks.length > 0 ? 'status-indicator status-indicator--in-progress' : 'status-indicator'} />
+            <h3 className="kanban-column__title">{column.title}</h3>
+            <div className={tasks.length > 0 ? 'count-block' : ''}>
+                <span>
+                    { tasks.length > 0 && tasks.length  }
+                </span>
+            </div>
+        </div>
         <Droppable droppableId={column.id}>
             {(provided, snapchot) => (
                 <div
@@ -17,14 +25,16 @@ const Column = ({tasks, column}:Props) => {
                     {...provided.droppableProps}
                     className="kanban-column__tasks"
                 >
+                    <div className="kanban-column__tasks-container">
+
                     {tasks.map((task:any, index:number) => (
                         <Draggable key={task.id} draggableId={task.id} index={index}>
                             {(draggableProvided, snapshot) => (
                                 <div
-                                    ref={draggableProvided.innerRef}
-                                    {...draggableProvided.draggableProps}
-                                    {...draggableProvided.dragHandleProps}
-                                    className="kanban-card__container"
+                                ref={draggableProvided.innerRef}
+                                {...draggableProvided.draggableProps}
+                                {...draggableProvided.dragHandleProps}
+                                className="kanban-card__container"
                                 >
                                     <Card task={task} index={index}/>
                                 </div>
@@ -32,6 +42,10 @@ const Column = ({tasks, column}:Props) => {
                         </Draggable>
                     ))}
                     {provided.placeholder}
+                    </div>
+                    <div>
+                        <button className="task-add__btn">+ Add task</button>
+                    </div>
                 </div>
             )}
         </Droppable>
