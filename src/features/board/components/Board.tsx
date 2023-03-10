@@ -81,8 +81,8 @@ const Board = () => {
     <>
       <div className="task-board">
         <DragDropContext onDragEnd={onDragEnd}>
-          {state.columnOrder.map((columnId:any) => {
-            const column = state.columns[columnId];
+          {state.columnOrder.map((columnId:string) => {
+            const column = state.columns[columnId]
             const tasks = column.taskIds.map(
               (taskId:any) => state.tasks[taskId]
             );

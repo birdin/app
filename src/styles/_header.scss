@@ -20,11 +20,11 @@
 
 .project-logo {
     display: block;
-    width: 55px;
-    border-radius: 10px;
+    height: 45px;
+    width: 45px;
+    border-radius: 6px;
     overflow: hidden;
     margin-right: 1rem;
-    height: 55px;
     img {
         width: 100%;
     }
@@ -60,6 +60,7 @@
 .project-header__title {
     //font-size: 1.2rem;
     font-size: 20px;
+    margin: 0;
     @media (min-width: $sm) {
         font-size: 22px;
     }
@@ -103,7 +104,7 @@
 .statusbar-category__item {
     background-color: rgb(131 156 172);
     color: white;
-    font-size: 0.8em;
+    font-size: 0.95em;
     padding: 1px 8px;
     border-radius: 3px;
 }

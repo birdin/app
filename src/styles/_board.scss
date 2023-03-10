@@ -21,7 +21,7 @@
 }
 
 .kanban-card {
-    padding: 1rem;
+    padding: 14px;
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     user-select: none; 
@@ -63,7 +63,7 @@
 .count-block {
     transition: 0.5;
     width: 22px;
-    height: 22px;
+    height: 20px;
     display: flex;
     align-items: center;
     font-size: 10px;
@@ -86,6 +86,8 @@
     color: #335C51;
     letter-spacing: -0.2px;
     margin: 0;
+    font-size: 15px;
+    padding-right: 10px;
     //padding-bottom: 4px;
 }
 
@@ -98,7 +100,7 @@
 .card-status__container {
     display: flex;
     align-items: center;
-    margin-top: 7px;
+    margin-top: 4px;
     span {
         font-size: 13px;
     }
