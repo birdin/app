@@ -1,12 +1,12 @@
 export const initialData = {
     tasks: {
-        'task-1': { id: 'task-1', dueDate:'3/25/2021', members:["Carlos"], name:"Finish new dashboard", content: 'Take out the garbage' },
-        'task-2': { id: 'task-2', members:[], name:"Update styles", content: 'Watch my favorite show' },
-        'task-3': { id: 'task-3', dueDate:"31/3/2023", members:[], name:"Update components", content: 'Charge my phone' },
-        'task-4': { id: 'task-4', members:["Carlos"], name:"Create new template", content: 'Cook dinner' },
-        'task-5': { id: 'task-5', members:["Carlos"], name:"Create new template", content: 'Cook dinner' },
-        'task-6': { id: 'task-6', members:[], name:"Create new template", content: 'Cook dinner' },
-        'task-7': { id: 'task-7', members:[], name:"Create new template", content: 'Cook dinner' },
+        'task-1': { id: 'task-1', dueDate:'3/25/2023', members:["Carlos"], name:"Finish new dashboard", content: 'Complete dashboard design' },
+        'task-2': { id: 'task-2', members:[], name:"Update styles", content: 'Add new responsibe styles of the new template' },
+        'task-3': { id: 'task-3', dueDate:'3/28/2023', members:[], name:"Create table component", content: 'Code new search table using custom hooks' },
+        'task-4': { id: 'task-4', members:["Carlos"], name:"Create design 'user page'", content: 'Design template based on use cases for user page' },
+        'task-5': { id: 'task-5', dueDate:'3/4/2023', members:["Carlos"], name:"Fix homepage responsive styles", content: 'Fix navbar styles which doesnt work properly' },
+        'task-6': { id: 'task-6', members:[], name:"Add modal form", content: 'Create new modal for add component' },
+        'task-7': { id: 'task-7', members:[], name:"Create new task template", content: 'Define alternative design for project tasks' },
     },
     columns: {
         'column-1': {

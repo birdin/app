@@ -41,7 +41,7 @@
 }
 
 .kanban-column__title {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 600;
     padding: 0;
     margin: 0;
@@ -71,6 +71,9 @@
     justify-content: center;
     color: white;
     background-color: #6e7ca0;
+    span {
+        font-size: 13px;
+    }
 }
 
 .kanban-card__header {
@@ -88,6 +91,7 @@
 
 .kanban-card__content {
     padding: 0.5rem 0;
+    font-size: 14px;
 }
 
 
@@ -106,6 +110,10 @@
     background-color: #8FD1BF;
     border-radius: 50%;
     margin-right: 4px;
+}
+
+.card-status__indicator--overdue {
+    background-color: #f44336;
 }
 
 .kanban-card__status {

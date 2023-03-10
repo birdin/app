@@ -1,22 +1,14 @@
 import React from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { ProfilePlaceholder } from "../../../components/UserProfile";
+import { getDueMessage } from "../utils/getDays";
 
 type Props = {
   task: any;
   index: number;
 };
 
-const Card = ({ task, index }: Props) => {
-  const getDates = (date: any) => {
-    if(date === undefined) return ""
-
-    const today = new Date()
-    const dueDate = new Date(date)
-    console.log(today, dueDate)
-    return ''
-  }
-  
+const Card = ({ task, index }: Props) => {  
   return (
     <div key={task.id} id={task.id} className="kanban-card">
       <div className="kanban-card__header">
@@ -32,8 +24,7 @@ const Card = ({ task, index }: Props) => {
       </div>
       <div className="kanban-card__status">
           <div className="card-status__container">
-            <div className="card-status__indicator"></div>
-            <span>{getDates(task.dueDate)}</span>
+            {getDueMessage(task.dueDate)}
           </div>
           {
             task.members.length > 0 && <ProfilePlaceholder />
