@@ -61,6 +61,7 @@
     //font-size: 1.2rem;
     font-size: 20px;
     margin: 0;
+    letter-spacing: var(--letter-spacing);
     @media (min-width: $sm) {
         font-size: 22px;
     }
@@ -102,9 +103,9 @@
 }
 
 .statusbar-category__item {
-    background-color: rgb(131 156 172);
+    background-color: rgb(109 167 205);
     color: white;
-    font-size: 0.95em;
-    padding: 1px 8px;
+    font-size: 0.9em;
+    padding: 2px 8px;
     border-radius: 3px;
 }

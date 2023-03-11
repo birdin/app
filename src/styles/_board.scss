@@ -25,6 +25,9 @@
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     user-select: none; 
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
     //disable selection 
 }
 
@@ -38,6 +41,9 @@
     align-items: center;
     margin: 1rem 0;
     user-select: none; 
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 .kanban-column__title {
@@ -61,9 +67,9 @@
 }
 
 .count-block {
-    transition: 0.5;
+    transition: 0.5s;
     width: 22px;
-    height: 20px;
+    height: 18px;
     display: flex;
     align-items: center;
     font-size: 10px;
