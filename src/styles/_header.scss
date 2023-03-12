@@ -6,6 +6,7 @@
     //gap: 1rem;
 }
 
+
 .nav-settings {
     button {
         border: none;
@@ -108,4 +109,22 @@
     font-size: 0.9em;
     padding: 2px 8px;
     border-radius: 3px;
+}
+
+.form-header__title {
+    display: flex;
+    align-items: center;
+    span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        letter-spacing: -0.3px;
+        &:first-child {
+            color: #777777;
+            &:after {
+                content: ">";
+                margin-right: 5px;
+            }
+        }
+    }
 }

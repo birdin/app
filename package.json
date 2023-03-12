@@ -11,13 +11,12 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
-    "@dnd-kit/core": "^6.0.8",
-    "@dnd-kit/sortable": "^7.0.2",
     "@hello-pangea/dnd": "^16.2.0",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
+    "react-quill": "^2.0.0",
     "react-router-dom": "^6.8.2",
     "sass": "^1.58.3"
   },

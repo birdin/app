@@ -24,3 +24,29 @@ button {
         background-color: #ffffff;
     }
 }
+
+.btn-form {
+    padding: 5px 10px;
+    background-color: var(--btn-color-primary);
+    cursor: pointer;
+    color: #2c2c2c;
+    display: flex;
+    align-items: center;
+
+}
+
+.form-btn--secondary, .form-btn--primary {
+    padding: 5px 2rem;
+    font-weight: 500;
+}
+
+.form-btn--primary {
+    background-color:  var(--btn-color-secondary);
+    color: white;
+    svg {
+        margin-left: -0.5rem;
+    }
+}
+
+
+
