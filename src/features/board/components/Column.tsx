@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { Draggable, Droppable} from "@hello-pangea/dnd";
 import Card from './Card'
+import { GlobalContext } from "../../../context/GlobalContext";
 
 type Props = {
     column: any,
@@ -7,6 +9,8 @@ type Props = {
 }
 
 const Column = ({tasks, column}:Props) => {
+ const {modal} = useContext(GlobalContext)
+
   return (
     <div className="kanban-column">
         <div className="kanban-column__header">
@@ -44,7 +48,7 @@ const Column = ({tasks, column}:Props) => {
                     {provided.placeholder}
                     </div>
                     <div>
-                        <button className="task-add__btn">+ Add task</button>
+                        <button className="task-add__btn" onClick={()=>{ modal.onOpen(true)} }>+ Add task</button>
                     </div>
                 </div>
             )}

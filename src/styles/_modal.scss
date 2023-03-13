@@ -1,9 +1,27 @@
+.modal-overlay {
+    position: absolute;
+    background-color: #00000021;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    overflow: hidden;
+}
+
 .form-modal__container {
     background-color: white;
+    width: 100%;
+    min-width: 300px;
     max-width: 600px;
-    margin: 1rem;
     border-radius: 9px;
     box-shadow: 0px 0px 12px #cfcfcf;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
 }
 
 .form-header {
@@ -11,7 +29,27 @@
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem 1rem;
-    border-bottom: 1px solid #b2b2b2;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.form-header__title {
+    display: flex;
+    align-items: center;
+    span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        letter-spacing: -0.3px;
+        color: #7C7C7C;
+        font-weight: 500;
+        &:first-child {
+            color: #B6B6B6;
+            &:after {
+                content: ">";
+                margin-right: 5px;
+            }
+        }
+    }
 }
 
 .add-form__container {
@@ -30,7 +68,7 @@
 
 .form-group__input input  {
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: 17px;
     border: none;
     width: 100%;
     padding: 0;
@@ -42,6 +80,7 @@
 .form-btn__section {
     display: flex;
     gap: 5px;
+    flex-wrap: wrap;
 }
 
 .add-form__container {
@@ -54,6 +93,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
 

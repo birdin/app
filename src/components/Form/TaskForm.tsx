@@ -1,11 +1,15 @@
-import React, { useState } from "react";
-import { AiOutlineClose } from "react-icons/ai";
+import { useState, useContext } from "react";
+import { AiOutlineArrowUp, AiOutlineClose } from "react-icons/ai";
 import ReactQuill from "react-quill";
-import {RiAddFill} from 'react-icons/ri'
+import { RiAddFill } from "react-icons/ri";
+import { BsCalendarX } from "react-icons/bs";
 import "react-quill/dist/quill.bubble.css";
+import { FaUserCircle } from "react-icons/fa";
+import { GlobalContext } from "../../context/GlobalContext";
 
 const TaskForm = () => {
-  const [value, setValue] = useState("Hello work!");
+  const { modal } = useContext(GlobalContext);
+  const [value, setValue] = useState("");
 
   const modules = {
     toolbar: [
@@ -21,16 +25,14 @@ const TaskForm = () => {
     <div className="form-modal__container">
       <div className="form-header">
         <div className="form-header__title">
-            <span>
-                <RiAddFill />
-                LaStudio 
-            </span>
-            <span>
-                New Task
-            </span>
+          <span>
+            <RiAddFill />
+            La Forma
+          </span>
+          <span>New Task</span>
         </div>
         <div className="form-header__actions">
-          <button className="btn form-header__btn--close">
+          <button className="btn form-header__btn--close" onClick={()=>{modal.onOpen(false)}}>
             <AiOutlineClose />
           </button>
         </div>
@@ -51,15 +53,24 @@ const TaskForm = () => {
         </div>
         <div className="btn-group">
           <div className="btn-dropdown__section form-btn__section">
-            <div className="btn-form btn-dropdown__btn">Due date</div>
-            <div className="btn-form btn-dropdown__btn">Priority</div>
-            <div className="btn-form btn-dropdown__btn">Assign to</div>
+            <div className="btn-form btn-dropdown__btn">
+              <BsCalendarX />
+              Due date
+            </div>
+            <div className="btn-form btn-dropdown__btn">
+              <AiOutlineArrowUp />
+              Priority
+            </div>
+            <div className="btn-form btn-dropdown__btn">
+              <FaUserCircle className="member-icon" />
+              Assign to
+            </div>
           </div>
           <div className="form-btn__section">
             <div className="btn-form form-btn--secondary">Cancel</div>
             <div className="btn-form form-btn--primary">
-                <RiAddFill/>
-                Create
+              <RiAddFill />
+              Create
             </div>
           </div>
         </div>

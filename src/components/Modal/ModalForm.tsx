@@ -1,12 +1,19 @@
-import React from 'react'
-import { TaskForm } from '../Form'
+import { useContext } from "react";
+import { TaskForm } from "../Form";
+import { GlobalContext } from "../../context/GlobalContext";
 
-const ModalForm = () => {
+const ModalForm = ({}) => {
+  const { modal } = useContext(GlobalContext);
+  const { open, onOpen } = modal;
+
+  if (!open) return null;
+
   return (
     <div>
-        <TaskForm/>
+      <div className="modal-overlay" onClick={() => onOpen(false)}></div>
+      <TaskForm />
     </div>
-  )
-}
+  );
+};
 
-export default ModalForm
+export default ModalForm;

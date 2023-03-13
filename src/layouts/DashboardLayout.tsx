@@ -10,7 +10,7 @@ const DashboardLayout = ({children} : Props) => {
     <>
         <Navbar />
         {children}
-≤    </>
+    </>
   )
 }
 

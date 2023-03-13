@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 
 const initialState = {
     user: {
@@ -36,15 +36,28 @@ const initialState = {
     }
 }
 
-export const GlobalContext = createContext(
-    {
+export const GlobalContext = createContext({
         state: initialState,
+        modal: {
+            open: false,
+            onOpen: (props:boolean) => {},
+        }
     }
 );
 
 export const GlobalProvider = (props:any) => {
+    const [isOpen, setIsOpen] = useState(true);
+    const onOpen = (props:boolean) => {
+        setIsOpen(props);
+    }
+    const modal = {
+        open: isOpen,
+        onOpen: onOpen,
+    }
+
     return <GlobalContext.Provider value={{
         state: initialState,
+        modal: modal,
     }
     }>{props.children}</GlobalContext.Provider>
 }
