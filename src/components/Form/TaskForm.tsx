@@ -6,10 +6,30 @@ import { BsCalendarX } from "react-icons/bs";
 import "react-quill/dist/quill.bubble.css";
 import { FaUserCircle } from "react-icons/fa";
 import { GlobalContext } from "../../context/GlobalContext";
+import { useInput } from "../../hooks/useInput";
 
 const TaskForm = () => {
-  const { modal } = useContext(GlobalContext);
+  const { modal, data, addData } = useContext(GlobalContext);
   const [value, setValue] = useState("");
+  const name = useInput('text')
+
+  //console.log(data);
+
+  const onSubmit = (e:any) => {
+    e.preventDefault();
+    const task = {
+            id: 'task-' + Date.now(),
+            name: name.value,
+            content: value,
+            dueDate: '2023-03-01',
+            members: ['user-1'],
+            columnId: 'column-1',
+    }
+
+    addData(task)
+    modal.onOpen(false)
+
+  }
 
   const modules = {
     toolbar: [
@@ -40,7 +60,7 @@ const TaskForm = () => {
 
       <form className="add-form__container">
         <div className="form-group form-group__input">
-          <input type="text" placeholder="Task name" />
+          <input placeholder="Task name" {...name} />
         </div>
         <div className="form-group form-group__textarea">
           <ReactQuill
@@ -68,7 +88,7 @@ const TaskForm = () => {
           </div>
           <div className="form-btn__section">
             <div className="btn-form form-btn--secondary">Cancel</div>
-            <div className="btn-form form-btn--primary">
+            <div className="btn-form form-btn--primary" onClick={onSubmit}>
               <RiAddFill />
               Create
             </div>
