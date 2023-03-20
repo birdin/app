@@ -7,6 +7,7 @@ import "react-quill/dist/quill.bubble.css";
 import { FaUserCircle } from "react-icons/fa";
 import { GlobalContext } from "../../context/GlobalContext";
 import { useInput } from "../../hooks/useInput";
+import { toast } from "react-toastify";
 
 const TaskForm = () => {
   const { modal, data, setData, addData } = useContext(GlobalContext);
@@ -36,6 +37,8 @@ const TaskForm = () => {
     aux.columns['column-1'].taskIds.unshift(task.id)
 
     console.log( aux )
+
+    toast.success('Task created successfully')
     
     addData(aux)
     modal.onOpen(false)

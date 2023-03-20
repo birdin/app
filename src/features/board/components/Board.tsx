@@ -82,7 +82,6 @@ const Board = () => {
   
   }  
 
-
   return (
     <>
       <div className="task-board">

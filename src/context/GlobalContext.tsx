@@ -81,8 +81,7 @@ export const GlobalContext = createContext({
             onOpen: (props:boolean) => {},
         },
         addData: (task:any) => {},
-        data: {},
-        setData: (props:any) => {},
+        data: {}
     }
 );
 
