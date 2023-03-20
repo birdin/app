@@ -14,8 +14,6 @@ const TaskForm = () => {
   const [value, setValue] = useState("");
   const name = useInput('text')
 
-  //console.log(data);
-
   const onSubmit = (e:any) => {
     e.preventDefault();
     const task = {
@@ -27,22 +25,11 @@ const TaskForm = () => {
             columnId: 'column-1',
     }
 
-    const aux = {...data}
+    addData(task)
     
-    //aux.tasks.push(task)
-    //aux.columns[0].taskIds.push(task.id)
-
-    aux.tasks[task.id] = task
-    //aux.columns['column-1'].taskIds.push(task.id)
-    aux.columns['column-1'].taskIds.unshift(task.id)
-
-    console.log( aux )
-
     toast.success('Task created successfully')
     
-    addData(aux)
     modal.onOpen(false)
-
   }
 
   const modules = {

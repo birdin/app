@@ -1,8 +1,6 @@
-import React, { useContext, useEffect, usedata } from "react";
-import { initialData } from "../data/mockdata";
+import { useContext } from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import Column from "./Column";
-import Card from "./Card";
 import { GlobalContext } from "../../../context/GlobalContext";
 
 const Board = () => {
@@ -12,7 +10,6 @@ const Board = () => {
 
   const onDragEnd = (result: any) => {
     const { destination, source, draggableId } = result;
-    console.log(result);
     if (!destination) {
       return;
     }

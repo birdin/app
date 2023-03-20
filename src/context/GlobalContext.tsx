@@ -81,7 +81,9 @@ export const GlobalContext = createContext({
             onOpen: (props:boolean) => {},
         },
         addData: (task:any) => {},
-        data: {}
+        data: {},
+        setData: (props:any) => {
+        }
     }
 );
 
@@ -98,6 +100,24 @@ export const GlobalProvider = (props:any) => {
     }
 
     const addTask = (task:any) => {
+        setData({
+            ...data,
+            tasks:{
+                ...data.tasks,
+                [task.id]: task
+            },
+            columns:{
+                ...data.columns,
+                'column-1':{
+                    ...data.columns['column-1'],
+                    taskIds: [task.id, ...data.columns['column-1'].taskIds]
+                }
+            }
+        })
+    }
+
+    /*
+    const addTask = (task:any) => {
         const newTask = {
             id: task.id,
             name: task.name,
@@ -106,7 +126,7 @@ export const GlobalProvider = (props:any) => {
             members: task.members,
         }
         //setData();
-    }
+    }*/
 
     
     return <GlobalContext.Provider value={{
