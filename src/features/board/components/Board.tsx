@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, usedata } from "react";
 import { initialData } from "../data/mockdata";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import Column from "./Column";
@@ -6,7 +6,10 @@ import Card from "./Card";
 import { GlobalContext } from "../../../context/GlobalContext";
 
 const Board = () => {
-  const [state, setState] = useState(initialData);
+  //const [data, setData] = usedata(initialData);
+  const { data, setData } = useContext(GlobalContext);
+
+
   const onDragEnd = (result: any) => {
     const { destination, source, draggableId } = result;
     console.log(result);
@@ -14,6 +17,7 @@ const Board = () => {
       return;
     }
 
+    // If the user drops the item in the same place
     if (
       destination.droppableId === source.droppableId &&
       destination.index === source.index
@@ -21,9 +25,10 @@ const Board = () => {
       return;
     }
 
-    const start = state.columns[source.droppableId];
-    const finish = state.columns[destination.droppableId];
+    const start = data.columns[source.droppableId];
+    const finish = data.columns[destination.droppableId];
 
+    // Moving within the same column
     if (start === finish) {
       const newTaskIds = Array.from(start.taskIds);
       newTaskIds.splice(source.index, 1);
@@ -34,18 +39,19 @@ const Board = () => {
         taskIds: newTaskIds,
       };
 
-      const newState = {
-        ...state,
+      const newdata = {
+        ...data,
         columns: {
-          ...state.columns,
+          ...data.columns,
           [newColumn.id]: newColumn,
         },
       };
 
-      setState(newState);
+      setData(newdata);
       return;
     }
 
+    // Moving from one list to another
     if(start !== finish){
       const startTaskIds = Array.from(start.taskIds);
       startTaskIds.splice(source.index, 1);
@@ -61,16 +67,16 @@ const Board = () => {
         taskIds: finishTaskIds,
       };
 
-      const newState = {
-        ...state,
+      const newdata = {
+        ...data,
         columns: {
-          ...state.columns,
+          ...data.columns,
           [newStart.id]: newStart,
           [newFinish.id]: newFinish,
         },
       };
 
-      setState(newState);
+      setData(newdata);
       return;
     }
   
@@ -81,10 +87,10 @@ const Board = () => {
     <>
       <div className="task-board">
         <DragDropContext onDragEnd={onDragEnd}>
-          {state.columnOrder.map((columnId:any) => {
-            const column = state.columns[columnId];
+          {data.columnOrder.map((columnId:any) => {
+            const column = data.columns[columnId];
             const tasks = column.taskIds.map(
-              (taskId:any) => state.tasks[taskId]
+              (taskId:any) => data.tasks[taskId]
             );
 
             return ( 

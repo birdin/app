@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import {useContext} from 'react'
 import { AiOutlineCalendar } from 'react-icons/ai'
 import { GlobalContext } from '../../context/GlobalContext'
 const ProjectHeader = () => {

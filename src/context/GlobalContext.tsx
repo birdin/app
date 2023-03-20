@@ -51,7 +51,7 @@ const initialState = {
                 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.",
                 status: "active",
                 type: "public",
-                img: 'https://scontent.fmex10-2.fna.fbcdn.net/v/t39.30808-6/305204083_417435730523292_5046221284460135404_n.png?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=P-QcpSynuNoAX8VwZjH&_nc_ht=scontent.fmex10-2.fna&oh=00_AfAN9UFJSRcEwCvlVIwYOKAe9sCOGlrtsZjXGCuvXpfULg&oe=64105758',
+                img: 'https://assets.codigohabil.com/img/laforma.png',
                 deadline: "10/12/2023",
                 members: [
 
@@ -81,7 +81,8 @@ export const GlobalContext = createContext({
             onOpen: (props:boolean) => {},
         },
         addData: (task:any) => {},
-        data: {}
+        data: {},
+        setData: (props:any) => {},
     }
 );
 
@@ -113,7 +114,8 @@ export const GlobalProvider = (props:any) => {
         state: initialState,
         modal: modal,
         addData: addTask,
-        data: data
+        data: data,
+        setData: setData,
     }
     }>{props.children}</GlobalContext.Provider>
 }

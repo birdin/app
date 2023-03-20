@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+/*
 import {
   DndContext, 
   closestCenter,
@@ -46,7 +47,7 @@ export function Kanban() {
     </DndContext>
   );
   
-  function handleDragEnd(event) {
+  function handleDragEnd(event : any) {
     const {active, over} = event;
     
     if (active.id !== over.id) {
@@ -59,3 +60,5 @@ export function Kanban() {
     }
   }
 }
+
+*/

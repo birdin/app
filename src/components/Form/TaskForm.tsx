@@ -9,7 +9,7 @@ import { GlobalContext } from "../../context/GlobalContext";
 import { useInput } from "../../hooks/useInput";
 
 const TaskForm = () => {
-  const { modal, data, addData } = useContext(GlobalContext);
+  const { modal, data, setData, addData } = useContext(GlobalContext);
   const [value, setValue] = useState("");
   const name = useInput('text')
 
@@ -26,7 +26,18 @@ const TaskForm = () => {
             columnId: 'column-1',
     }
 
-    addData(task)
+    const aux = {...data}
+    
+    //aux.tasks.push(task)
+    //aux.columns[0].taskIds.push(task.id)
+
+    aux.tasks[task.id] = task
+    //aux.columns['column-1'].taskIds.push(task.id)
+    aux.columns['column-1'].taskIds.unshift(task.id)
+
+    console.log( aux )
+    
+    addData(aux)
     modal.onOpen(false)
 
   }
