@@ -2,6 +2,7 @@ import React from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { ProfilePlaceholder } from "../../../components/UserProfile";
 import { getDueMessage } from "../utils/getDays";
+import { normalizeText } from "../utils/normalizeText";
 
 type Props = {
   task: any;
@@ -20,7 +21,9 @@ const Card = ({ task, index }: Props) => {
         </div>
       </div>
       <div className="kanban-card__content">
-        {task.content}
+        {
+          normalizeText(task.content, 140)
+        }
       </div>
       <div className="kanban-card__status">
           <div className="card-status__container">

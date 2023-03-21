@@ -10,7 +10,7 @@ import { useInput } from "../../hooks/useInput";
 import { toast } from "react-toastify";
 
 const TaskForm = () => {
-  const { modal, data, setData, addData } = useContext(GlobalContext);
+  const { modal, addData } = useContext(GlobalContext);
   const [value, setValue] = useState("");
   const name = useInput('text')
 
@@ -20,13 +20,13 @@ const TaskForm = () => {
             id: 'task-' + Date.now(),
             name: name.value,
             content: value,
-            dueDate: '2023-03-01',
+            dueDate: '2023-03-11',
             members: ['user-1'],
             columnId: 'column-1',
     }
 
     addData(task)
-    
+
     toast.success('Task created successfully')
     
     modal.onOpen(false)
