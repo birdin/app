@@ -45,6 +45,30 @@ type Props = {
   setValue: (value: string) => void,
 };
 
+const priority = [
+    {
+        id: 'none',
+        name: 'None',
+        color: 'gray'
+    },
+    {
+        id: 'low',
+        name: 'Low',
+        color: 'green'
+    },
+    {
+        id: 'medium',
+        name: 'Medium',
+        color: 'yellow'
+    },
+    {
+        id: 'high',
+        name: 'High',
+        color: 'red'
+    }
+]
+
+
 const DropdownPriority = ({ children, setValue, value }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -55,20 +79,26 @@ const DropdownPriority = ({ children, setValue, value }: Props) => {
     console.log(value)
   }
 
-
-
   return (
     <>
-      <div className="dropdown-select" onClick={()=> {setIsOpen(true)}}>
+      <div className="dropdown-select" ref={ref}>
         {isOpen && (
-          <div className="select-container" ref={ref}>
-            <div className="select-item">None</div>
-            <div className="select-item">Low</div>
-            <div className="select-item">Medium</div>
-            <div className="select-item">High</div>
+          <div className="select-container"  >
+            {priority.map((item) => {
+                return (
+                    <div className="select-item" key={item.id} onClick={() => {
+                        setValue(item.name)
+                        setIsOpen(false)
+                    }}>
+                        {item.name}
+                    </div>
+                )
+            })}
           </div>
         )}
-        {children}
+        <span onClick={()=> {setIsOpen(!isOpen)}}>
+            {children}
+        </span>
       </div>
     </>
   );
