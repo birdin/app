@@ -8,29 +8,32 @@ import { FaUserCircle } from "react-icons/fa";
 import { GlobalContext } from "../../context/GlobalContext";
 import { useInput } from "../../hooks/useInput";
 import { toast } from "react-toastify";
+import { Dropdown } from "../Dropdown";
+import DropdownPriority from "../Dropdown/DropdownPriority";
 
 const TaskForm = () => {
   const { modal, addData } = useContext(GlobalContext);
   const [value, setValue] = useState("");
-  const name = useInput('text')
+  const [priority, setPriority] = useState("");
+  const name = useInput("text");
 
-  const onSubmit = (e:any) => {
+  const onSubmit = (e: any) => {
     e.preventDefault();
     const task = {
-            id: 'task-' + Date.now(),
-            name: name.value,
-            content: value,
-            dueDate: '2023-03-11',
-            members: ['user-1'],
-            columnId: 'column-1',
-    }
+      id: "task-" + Date.now(),
+      name: name.value,
+      content: value,
+      dueDate: "2023-03-11",
+      members: ["user-1"],
+      columnId: "column-1",
+    };
 
-    addData(task)
+    addData(task);
 
-    toast.success('Task created successfully')
-    
-    modal.onOpen(false)
-  }
+    toast.success("Task created successfully");
+
+    modal.onOpen(false);
+  };
 
   const modules = {
     toolbar: [
@@ -53,7 +56,12 @@ const TaskForm = () => {
           <span>New Task</span>
         </div>
         <div className="form-header__actions">
-          <button className="btn form-header__btn--close" onClick={()=>{modal.onOpen(false)}}>
+          <button
+            className="btn form-header__btn--close"
+            onClick={() => {
+              modal.onOpen(false);
+            }}
+          >
             <AiOutlineClose />
           </button>
         </div>
@@ -78,10 +86,12 @@ const TaskForm = () => {
               <BsCalendarX />
               Due date
             </div>
-            <div className="btn-form btn-dropdown__btn">
-              <AiOutlineArrowUp />
-              Priority
-            </div>
+            <DropdownPriority value = {priority} setValue={setPriority} >
+              <div className="btn-form btn-dropdown__btn">
+                <AiOutlineArrowUp />
+                Priority
+              </div>
+            </DropdownPriority>
             <div className="btn-form btn-dropdown__btn">
               <FaUserCircle className="member-icon" />
               Assign to
