@@ -10,11 +10,13 @@ import { useInput } from "../../hooks/useInput";
 import { toast } from "react-toastify";
 import { Dropdown } from "../Dropdown";
 import DropdownPriority from "../Dropdown/DropdownPriority";
+import DropdownAssignUser from "../Dropdown/DropdownAssingUser";
 
 const TaskForm = () => {
   const { modal, addData } = useContext(GlobalContext);
   const [value, setValue] = useState("");
   const [priority, setPriority] = useState("");
+  const [assignUser, setAssignUser] = useState("");
   const name = useInput("text");
 
   const onSubmit = (e: any) => {
@@ -86,16 +88,18 @@ const TaskForm = () => {
               <BsCalendarX />
               Due date
             </div>
-            <DropdownPriority value = {priority} setValue={setPriority} >
+            <DropdownPriority value={priority} setValue={setPriority}>
               <div className="btn-form btn-dropdown__btn">
                 <AiOutlineArrowUp />
                 Priority
               </div>
             </DropdownPriority>
-            <div className="btn-form btn-dropdown__btn">
-              <FaUserCircle className="member-icon" />
-              Assign to
-            </div>
+            <DropdownAssignUser value="assignUser" setValue={setAssignUser}>
+              <div className="btn-form btn-dropdown__btn">
+                <FaUserCircle className="member-icon" />
+                Assign to
+              </div>
+            </DropdownAssignUser>
           </div>
           <div className="form-btn__section">
             <div className="btn-form form-btn--secondary">Cancel</div>

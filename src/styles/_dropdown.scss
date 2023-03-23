@@ -14,9 +14,9 @@
 
 .select-container {
     position: absolute;
-    bottom: 2rem;
-    background-color: #f6f6f6a1;
-    width: 138px;
+    bottom: 2.3rem;
+    background-color: rgba(246, 246, 246, 0.89);
+    width: 150px;
     border-radius: 2px;
     box-shadow: 0px 0px 5px #d0d0d0d6;
     backdrop-filter: blur(2px);
@@ -24,9 +24,52 @@
 }
 
 .select-item {
+    display: flex;
     padding: 0.5rem 1rem;
     cursor: pointer;
+    gap: 8px;
+    align-items: center;
+    //font-size: 13px;
     &:hover {
         background-color: #e6e6e6;
     }
+}
+
+.select-item__container {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin: 2px;
+    border: 1px solid #b1b1b1;
+    border-radius: 3px;
+
+}
+
+.select-item__input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 3px;
+    background-color: transparent;
+    border: none;
+    &:focus {
+        outline: none;
+    }
+}
+
+.select-item--active {
+    background-color: #e6e6e6;
+}
+
+.select-button {
+    border: none;
+    height: 1rem;
+}
+
+.select-button--remove {
+    padding: 0;
+    padding-right: 4px;
+}
+
+.select-icon--search {
+    padding-left: 4px;
 }
