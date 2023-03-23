@@ -12,8 +12,10 @@
   },
   "dependencies": {
     "@hello-pangea/dnd": "^16.2.0",
+    "date-fns": "^2.29.3",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
+    "react-day-picker": "^8.6.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-quill": "^2.0.0",

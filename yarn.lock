@@ -946,6 +946,11 @@ data-urls@^3.0.2:
     whatwg-mimetype "^3.0.0"
     whatwg-url "^11.0.0"
 
+date-fns@^2.29.3:
+  version "2.29.3"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.29.3.tgz#27402d2fc67eb442b511b70bbdf98e6411cd68a8"
+  integrity sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==
+
 debug@4, debug@^4.1.0, debug@^4.3.4:
   version "4.3.4"
   resolved "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz"
@@ -1932,6 +1937,11 @@ react-beautiful-dnd@^13.1.1:
     react-redux "^7.2.0"
     redux "^4.0.4"
     use-memo-one "^1.1.1"
+
+react-day-picker@^8.6.0:
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/react-day-picker/-/react-day-picker-8.6.0.tgz#20e88f3aa2d568be29d5cf9a6684dd2162cbf6ef"
+  integrity sha512-n9/6abBZu+koSUBtsXqBfiOW44ROTjl7ebIqyaTQSO8i79bsCCgKCAyQP/1a79ySFkK4puGV1e7p7hK1ymdb/w==
 
 react-dom@^18.2.0:
   version "18.2.0"

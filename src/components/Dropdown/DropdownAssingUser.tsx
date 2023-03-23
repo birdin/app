@@ -4,8 +4,8 @@ import { useOnClickOutside } from "../../features/board/utils/useOnClickOutside"
 
 type Props = {
   children: JSX.Element;
-  value: string;
-  setValue: (value: string) => void;
+  value: any;
+  setValue: (value: any) => void;
 };
 type OnClickEventHandler = React.MouseEvent<HTMLButtonElement>;
 

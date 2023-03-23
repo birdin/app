@@ -4,8 +4,8 @@ import { SlArrowDownCircle, SlArrowUpCircle, SlMinus } from 'react-icons/sl'
 
 type Props = {
   children: JSX.Element,
-  value: string,
-  setValue: (value: string) => void,
+  value: any,
+  setValue: (value: any) => void,
 };
 
 const priority = [
@@ -22,7 +22,7 @@ const priority = [
         name: 'Medium',
         color: 'yellow',
         icon: () => {
-            return <SlMinus color="#c08b00;"/>
+            return <SlMinus color="#c08b00"/>
         }
     },
     {
@@ -51,15 +51,15 @@ const DropdownPriority = ({ children, setValue, value }: Props) => {
 
   return (
     <>
-      <div className="dropdown-select" ref={ref}>
+      <div className="dropdown-select dropdown-select-form" ref={ref}>
         {isOpen && (
           <div className="select-container"  >
             {priority.map((item) => {
                 return (
-                    <div className={`select-item ${item.name === value ? 'select-item--active' : ''}`} 
+                    <div className={`select-item ${item.name === value.name ? 'select-item--active' : ''}`} 
                         key={item.id} 
                         onClick={() => {
-                            setValue(item.name)
+                            setValue(item)
                             setIsOpen(false)
                         }}>
                         {item.icon()}

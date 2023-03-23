@@ -2,6 +2,10 @@
     position: relative;
 }
 
+.dropdown-select-form {
+    min-width: 100px;
+}
+
 .dropdown-overlay {
     position: absolute;
     top: 0;
@@ -72,4 +76,27 @@
 
 .select-icon--search {
     padding-left: 4px;
+}
+
+.calendar-container {
+    width: 280px;
+}
+
+.rdp-button:not([disabled]) {
+    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.rdp-cell {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.rdp-caption_label {
+    font-size: 1.2rem;
+}
+
+.rdp-day_selected, .rdp-day_selected:hover {
+    background-color: #565656;
 }
