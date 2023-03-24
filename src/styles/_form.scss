@@ -1,0 +1,51 @@
+.f-content-container {
+    padding: 1rem 2rem;
+    .ql-editor {
+        padding: 1rem 0;
+    }
+}
+
+.f-name-input {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.f-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    @media (min-width: $md) {
+        flex-direction: row;
+    }
+}
+
+.f-content-container {
+    width: 100%;
+    @media (min-width: $md) {
+        width: 70%;
+    }
+}
+
+
+
+.f-status-container {
+    width: 100%;
+    @media (min-width: $md) {
+        width: 30%;
+        min-width: 210px;
+        border: 1px solid var(--border-color);
+    }
+}
+
+.f-status-list {
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+    li {
+        font-weight: 500;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+}

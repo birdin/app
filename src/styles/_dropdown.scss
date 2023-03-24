@@ -94,9 +94,41 @@
 }
 
 .rdp-caption_label {
-    font-size: 1.2rem;
+    //font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .rdp-day_selected, .rdp-day_selected:hover {
     background-color: #565656;
+}
+
+.dropdown-edit {
+    position: relative;
+}
+
+
+.dropdown-edit__list {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255 255 255 / 88%);
+    backdrop-filter: blur(2px);
+    box-shadow: 0px 0px 5px #d0d0d0d6;
+    list-style: none;
+}
+
+.dropdown-edit--left {
+    right: 1.5rem;
+}
+
+.dropdown-edit--right {
+    left: 2rem;
+}
+
+.dropdown-edit__item {
+    padding: 6px;
+    width: 70px;
+    font-size: 13px;
+    cursor: pointer;
 }

@@ -122,3 +122,13 @@
     top: 74px;
     font-size: 11px;
 }
+
+.view-modal {
+    width: 95%;
+    box-sizing: border-box;
+    max-width: 700px;
+    min-height: 500px;
+    height: 88vh;
+    display: flex;
+    flex-direction: column;
+} 
