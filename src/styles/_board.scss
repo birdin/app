@@ -29,6 +29,15 @@
     -moz-user-select: none;
     -webkit-user-select: none;
     //disable selection 
+    a {
+        user-select: none; 
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        text-decoration: none;
+        text-align: left;
+        color: inherit;
+    }
 }
 
 .kanban-card__container {
