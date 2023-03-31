@@ -23,7 +23,7 @@ function App() {
 
       <Routes location={background || location}>
         <Route path="/task/:id" element={<Task />}>
-          <Route path=":id_task" element={<ViewTasks />} />
+          <Route path=":id_task/:task_name" element={<ViewTasks />} />
         </Route>
       </Routes>
 
