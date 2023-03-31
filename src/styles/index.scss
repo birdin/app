@@ -1,57 +1,50 @@
-@import 'normalize';
-@import 'variables';
-@import 'layout';
-@import 'buttons';
-@import 'navbar';
-@import 'header';
-@import 'avatar';
-@import 'board';
-@import 'modal';
-@import 'dropdown';
-@import 'form';
+@import "normalize";
+@import "variables";
+@import "layout";
+@import "buttons";
+@import "navbar";
+@import "header";
+@import "avatar";
+@import "board";
+@import "modal";
+@import "dropdown";
+@import "form";
 
 * {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 * {
-    font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 h2 {
-    font-size: 1.6rem;
-    @media (min-width: $sm) {
-        font-size: 2rem;
-    }
+  font-size: 1.6rem;
+  @media (min-width: $sm) {
+    font-size: 2rem;
+  }
 }
 
 .App {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 
-
-
-
-.App {
-    text-align: center;
-  }
-  
-  .modalDiv {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    background-color: rgba(91, 112, 131, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .modal {
-    width: 350px;
-    height: 200px;
-    background-color: white;
-    border-radius: 5px;
-  }
+.modalDiv {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  background-color: rgba(91, 112, 131, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  width: 350px;
+  height: 200px;
+  background-color: white;
+  border-radius: 5px;
+}

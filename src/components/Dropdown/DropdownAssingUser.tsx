@@ -33,10 +33,6 @@ const DropdownAssignUser = ({ children, setValue, value }: Props) => {
   const [inputValue, setInputValue] = useState<string>("");
   useOnClickOutside(ref, () => setIsOpen(false));
 
-  if (isOpen) {
-    console.log("is open")
-    console.log(value);
-  }
 
   const handleRemove = (e: OnClickEventHandler) => {
     e.preventDefault()

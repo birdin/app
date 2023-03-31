@@ -18,11 +18,6 @@ const DropdownCalendar = ({ children, setValue, value }: Props) => {
   const [inputValue, setInputValue] = useState<string>("");
   useOnClickOutside(ref, () => setIsOpen(false));
 
-  if (isOpen) {
-    console.log("is open")
-    console.log(value);
-  }
-
   return (
     <>
       <div className="dropdown-select" ref={ref}>

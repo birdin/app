@@ -22,16 +22,22 @@ const modules = {
   ],
 };
 
-const ModalViewTask = () => {
+type Props = {
+  task: any;
+};
+
+const ModalViewTask = ({task}:Props) => {
+  const { name, content, dueDate, members } = task;
+  const [inputName, setInputName] = useState(name);
   const [open, onOpen] = useState(true);
-  const [description, setDescription] = useState("This is a demo task");
+  const [description, setDescription] = useState(content);
   const [selected, setSelected] = useState(new Date());
   const [priority, setPriority] = useState({
     name: "None",
     color: "",
     icon: () => <></>,
   });
-  const [assignUser, setAssignUser] = useState("");
+  const [assignUser, setAssignUser] = useState(members);
 
   const navigation = useNavigate();
 
@@ -48,7 +54,7 @@ const ModalViewTask = () => {
           <div className="f-content-container">
             <div className="form-group">
               <div className="f-name-input" contentEditable="true">
-                This is a demo task
+                {inputName}
               </div>
             </div>
             <ReactQuill

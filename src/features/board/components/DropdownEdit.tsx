@@ -15,7 +15,6 @@ const DropdownEdit = ({ children }: Props) => {
 
   const onClick = () => {
     setPosition(ref.current?.offsetLeft || 0);
-    console.log(position + 100, windowWidth);
   };
 
   return (
