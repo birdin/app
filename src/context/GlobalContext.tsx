@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { init, initialState } from "./data/defaultData";
 
 export const GlobalContext = createContext({
@@ -13,12 +13,52 @@ export const GlobalContext = createContext({
   getTask: (id: string) => {},
 });
 
+function initEvents() {
+  const storageEvents = localStorage.getItem("tasks");
+  const parsedEvents = storageEvents
+    ? JSON.parse(storageEvents)
+    : {
+        tasks: {},
+        columns: {
+            "column-1": {
+              id: "column-1",
+              title: "To do",
+              taskIds: [],
+            },
+            "column-2": {
+              id: "column-2",
+              title: "Today",
+              taskIds: [],
+            },
+            "column-3": {
+              id: "column-3",
+              title: "In progress",
+              taskIds: [],
+            },
+            "column-4": {
+              id: "column-4",
+              title: "Done",
+              taskIds: [],
+            },
+          },
+          // Facilitate reordering of the columns
+          columnOrder: ["column-1", "column-2", "column-3", "column-4"],
+        };
+  return parsedEvents;
+}
+
 export const GlobalProvider = (props: any) => {
-  const [data, setData] = useState(init);
+  const [data, setData] = useState(initEvents);
   const [isOpen, setIsOpen] = useState(true);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(data));
+  }, [data]);
+
   const onOpen = (props: boolean) => {
     setIsOpen(props);
   };
+
   const modal = {
     open: isOpen,
     onOpen: onOpen,
@@ -60,84 +100,3 @@ export const GlobalProvider = (props: any) => {
     </GlobalContext.Provider>
   );
 };
-
-/*
-const initialState = {
-    user: {
-        id: 1,
-        name: "Carlos",
-        email: "
-        avatar: "https://i.pravatar.cc/150?img=1",
-        projects: [
-            {
-                id: 1,
-                name: "Project 1",
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.",
-                status: "active",
-                type: "public",
-                deadline: "10/12/2023",
-                members: [
-                    {
-                        id: 1,
-                        name: "Carlos",
-                        email: ""
-                        avatar: "https://i.pravatar.cc/150?img=1",
-                    },
-                    {
-                        id: 2,
-                        name: "John",
-                        email: ""
-                        avatar: "https://i.pravatar.cc/150?img=2",
-                    },
-                    {
-                        id: 3,
-                        name: "Jane",
-                        email: ""
-                        avatar: "https://i.pravatar.cc/150?img=3",
-                    },
-                ],
-                categories: [
-                    {
-                        id: 1,
-                        name: "Architecture",
-                    },
-                    {
-                        id: 2,
-                        name: "Web",
-                    },
-                ],
-                tasks: [
-                    {
-                        id: 1,
-                        name: "Finish new dashboard",
-                        content: "Take out the garbage",
-                        dueDate: "3/25/2023",
-                        members: [
-                            {
-                                id: 1,
-                                name: "Carlos",
-                                email: ""
-                                avatar: "https://i.pravatar.cc/150?img=1",
-                            },
-                        ],
-                    },
-                    {
-                        id: 2,
-                        name: "Update styles",
-                        content: "Watch my favorite show",
-                        dueDate: "3/28/2023",
-                        members: [
-                            {
-                                id: 1,
-                                name: "Carlos",
-                                email: ""
-                                avatar: "https://i.pravatar.cc/150?img=1",
-                            },
-                        ],
-                    },
-                ]
-            },
-        }
-    }
-
-*/
