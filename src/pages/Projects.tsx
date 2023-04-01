@@ -1,10 +1,11 @@
-import React from 'react'
-import { ProjectsList } from '../features/projects'
+import { ProjectList } from '../components/List'
+import { Navbar } from '../components/Navbar'
 
 const Projects = () => {
   return (
   <>
-    <ProjectsList />
+    <Navbar />
+    <ProjectList />
   </>)
 }
 
