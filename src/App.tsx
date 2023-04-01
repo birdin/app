@@ -22,14 +22,14 @@ function App() {
       </Routes>
 
       <Routes location={background || location}>
-        <Route path="/task/:id" element={<Task />}>
+        <Route path="/project/:id" element={<Task />}>
           <Route path=":id_task/:task_name" element={<ViewTasks />} />
         </Route>
       </Routes>
 
       {background && (
         <Routes>
-          <Route path="/task/:id/modal/:id" element={<ViewTasks />} />
+          <Route path="/project/:id/modal/:id" element={<ViewTasks />} />
         </Routes>
       )}
       <ToastContainer />

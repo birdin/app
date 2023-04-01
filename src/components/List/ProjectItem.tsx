@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from "react-router-dom"
 
 type Props = {
     name: string,
@@ -9,8 +9,10 @@ type Props = {
 const ProjectItem = ({name, description, id}: Props) => {
   return (
     <div>
-        <h3>{name}</h3>
-        <p>{description}</p>
+        <Link to={`/project/${id}`}>
+            <h3>{name}</h3>
+            <p>{description}</p>
+        </Link>
     </div>
   )
 }

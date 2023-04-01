@@ -32,9 +32,8 @@ const TaskForm = () => {
       dueDate: (selected?.getMonth() ? selected?.getMonth() + 1 : '') + "-" +  selected?.getDate() + "-" + selected?.getFullYear(),
       members: ["user-1"],
       columnId: "column-1",
+      categoryId: "category-1",
     };
-
-    console.log(task);
 
     if(validateForm()) {
       addData(task);
