@@ -10,8 +10,17 @@ const ProjectList = () => {
   console.log(projects);
   return (
     <>
-      <div>
-        <input {...searchState} />
+      <div className="ProjectPageHeader">
+        <div>
+            <h1>Projects</h1>
+            <p>List all projects</p>
+        </div>
+        <div>
+            <input {...searchState} />
+        </div>
+        <div>
+            <button>Create a project</button>
+        </div>
       </div>
       <div>
         {projects

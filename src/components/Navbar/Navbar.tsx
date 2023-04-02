@@ -3,12 +3,15 @@ import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md'
 import { BsThreeDots } from 'react-icons/bs'
 import { AiOutlineMenu } from 'react-icons/ai'
 import Logo from '../../assets/logo.svg'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
     <nav className='nav-dashboard fluid-container'>
       <div className="nav-logo">
-        <img src={Logo} alt="Logo"/>
+        <Link to="/">
+          <img src={Logo} alt="Logo"/>
+        </Link>
       </div>
       <div className="menu-btn">
         <button>

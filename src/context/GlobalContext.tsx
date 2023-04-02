@@ -12,6 +12,7 @@ export const GlobalContext = createContext({
   setData: (props: any) => {},
   getTask: (id: string) => {},
   projects: [],
+  dispatchProjects: (props: any) => {},
 });
 
 function initEvents() {
@@ -80,6 +81,7 @@ const initProjects = () => {
           name: "Project 2",
           description: "This is a project but with more elements",
           id: "2",
+          category: 'category-1'
         },
       ];
   return parsedProjects;
@@ -142,6 +144,7 @@ export const GlobalProvider = (props: any) => {
         setData: setData,
         getTask: getTask,
         projects: projects,
+        dispatchProjects: dispatchProjects,
       }}
     >
       {props.children}
