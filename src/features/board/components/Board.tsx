@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useMemo} from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import Column from "./Column";
 import { GlobalContext } from "../../../context/GlobalContext";
@@ -95,11 +95,11 @@ const Board = () => {
             );
 
             //get tasks with category_id == id
-            const resp = tasks.filter(task => task.categoryId === id)
-            console.log(resp)
+            const resp = useMemo(() => tasks.filter((task:any) => task.projectId === id), [data])
+          
 
             return ( 
-              <Column key={column.id} tasks={tasks} column={column}/>
+              <Column key={column.id} tasks={resp} column={column}/>
             )
           })
           }

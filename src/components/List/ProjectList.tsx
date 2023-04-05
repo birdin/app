@@ -44,7 +44,7 @@ const ProjectList = () => {
             return (
               <ProjectItem
                 name={project.name}
-                description={project.description}
+                label={project.label}
                 id={project.id}
                 key={project.id + project.name}
               />

@@ -16,6 +16,7 @@ const ProjectForm = () => {
             name: name.value,
             description: description.value,
             dueDate: dueDate.value,
+            label: name.value.slice(0, 2),
             id: uuidv4()
         }
         dispatchProjects({type: "ADD_PROJECT", payload: project});

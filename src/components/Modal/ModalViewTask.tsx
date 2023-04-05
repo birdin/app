@@ -1,5 +1,5 @@
 import Modal from "./Modal";
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import HeaderForm from "../Form/HeaderForm";
 import ReactQuill from "react-quill";
 import { BsCalendarX } from "react-icons/bs";
@@ -11,6 +11,8 @@ import {
 import { AiOutlineArrowUp } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { GlobalContext } from "../../context/GlobalContext";
+import { useDebounce } from "../../hooks/useDebounce";
 
 const modules = {
   toolbar: [
@@ -27,8 +29,10 @@ type Props = {
 };
 
 const ModalViewTask = ({task}:Props) => {
+  const {updateTask} = useContext(GlobalContext);
+  const [updatedTask, setUpdatedTask] = useState(task);
+
   const { name, content, dueDate, members } = task;
-  const [inputName, setInputName] = useState(name);
   const [open, onOpen] = useState(true);
   const [description, setDescription] = useState(content);
   const [selected, setSelected] = useState(new Date());
@@ -45,6 +49,14 @@ const ModalViewTask = ({task}:Props) => {
     navigation(-1);
   }
 
+  const val = useDebounce(updatedTask, 3000);
+
+  useEffect(() => {
+    updateTask(val)
+  }, [val])
+
+  //useDebounce()
+
 
   return (
     <Modal open={open} onOpen={onClick}>
@@ -53,14 +65,12 @@ const ModalViewTask = ({task}:Props) => {
         <div className="f-container">
           <div className="f-content-container">
             <div className="form-group">
-              <div className="f-name-input" contentEditable="true">
-                {inputName}
-              </div>
+              <input type='text' className="f-name-input" value={updatedTask.name} onChange={(el) => setUpdatedTask({...updatedTask, name: el.target.value})}/>
             </div>
             <ReactQuill
               theme="bubble"
-              value={description}
-              onChange={setDescription}
+              value={updatedTask.content}
+              onChange={(content) => setUpdatedTask({...updatedTask, content})}
               modules={modules}
               placeholder="Write description"
             />

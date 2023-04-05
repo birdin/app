@@ -11,9 +11,10 @@ export const GlobalContext = createContext({
   data: {},
   setData: (props: any) => {},
   getTask: (id: string) => {},
-  projects: [{name:'', description:'', id:''}],
+  projects: [{ name: "", label: "", id: "", description: "" }],
   dispatchProjects: (props: any) => {},
-  getTasksByProject: (id:string) => {}
+  getTasksByProject: (id: string) => {},
+  updateTask: (task: any) => {},
 });
 
 function initEvents() {
@@ -76,17 +77,20 @@ const initProjects = () => {
         {
           name: "Project 1",
           description: "This is a project",
+          label: "pro-1",
           id: "1",
         },
         {
           name: "Project 2",
           description: "This is a project but with more elements",
           id: "2",
-          category: 'category-1'
+          label: "pro-2",
+          category: "category-1",
         },
       ];
   return parsedProjects;
 };
+
 
 export const GlobalProvider = (props: any) => {
   const [data, setData] = useState(initEvents);
@@ -109,10 +113,10 @@ export const GlobalProvider = (props: any) => {
     setIsOpen(props);
   };
 
-  const getTasksByProject = (id : string) => {
-    const tasks = data.filter((el:any) => el.project == id)
+  const getTasksByProject = (id: string) => {
+    const tasks = data.filter((el: any) => el.project == id);
     return tasks;
-  }
+  };
 
   const modal = {
     open: isOpen,
@@ -136,6 +140,17 @@ export const GlobalProvider = (props: any) => {
     });
   };
 
+  const updateTask = (task: any) => {
+    setData({
+        ...data,
+        tasks: {
+            ...data.tasks,
+            [task.id]: task,
+        },
+    });
+    };
+
+
   const getTask = (id: string) => {
     return data?.tasks[id];
   };
@@ -151,7 +166,8 @@ export const GlobalProvider = (props: any) => {
         getTask: getTask,
         projects: projects,
         dispatchProjects: dispatchProjects,
-        getTasksByProject: getTasksByProject
+        getTasksByProject: getTasksByProject,
+        updateTask: updateTask
       }}
     >
       {props.children}

@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import 'react-day-picker/dist/style.css';
 
 import { DropdownCalendar, DropdownAssignUser, DropdownPriority } from "../Dropdown";
+import { useParams } from "react-router-dom";
 
 const TaskForm = () => {
   const { modal, addData } = useContext(GlobalContext);
@@ -21,6 +22,8 @@ const TaskForm = () => {
   const name = useInput("text");
   const [selected, setSelected] = useState<Date>();
 
+  const {id} = useParams();
+
 
   const onSubmit = (e: any) => {
     e.preventDefault();
@@ -30,9 +33,9 @@ const TaskForm = () => {
       content: value,
       priority: priority,
       dueDate: (selected?.getMonth() ? selected?.getMonth() + 1 : '') + "-" +  selected?.getDate() + "-" + selected?.getFullYear(),
-      members: ["user-1"],
+      members: [assignUser],
       columnId: "column-1",
-      categoryId: "category-1",
+      projectId: id,
     };
 
     if(validateForm()) {

@@ -133,3 +133,28 @@ export const initialState = {
       ],
     },
   };
+
+  const columns = {
+    'project-1':{
+      'column-1':{
+        id: 'column-1',
+        title: 'To do',
+        taskIds: [],
+      },
+      'column-2':{
+        id: 'column-2',
+        title: 'Today',
+        taskIds: [],
+      },
+      'column-3':{
+        id: 'column-3',
+        title: 'In progress',
+        taskIds: [],
+      },
+      'column-4':{
+        id: 'column-4',
+        title: 'Done',
+        taskIds: [],
+      },
+    }
+  }
