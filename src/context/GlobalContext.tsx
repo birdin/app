@@ -11,8 +11,9 @@ export const GlobalContext = createContext({
   data: {},
   setData: (props: any) => {},
   getTask: (id: string) => {},
-  projects: [],
+  projects: [{name:'', description:'', id:''}],
   dispatchProjects: (props: any) => {},
+  getTasksByProject: (id:string) => {}
 });
 
 function initEvents() {
@@ -108,6 +109,11 @@ export const GlobalProvider = (props: any) => {
     setIsOpen(props);
   };
 
+  const getTasksByProject = (id : string) => {
+    const tasks = data.filter((el:any) => el.project == id)
+    return tasks;
+  }
+
   const modal = {
     open: isOpen,
     onOpen: onOpen,
@@ -145,6 +151,7 @@ export const GlobalProvider = (props: any) => {
         getTask: getTask,
         projects: projects,
         dispatchProjects: dispatchProjects,
+        getTasksByProject: getTasksByProject
       }}
     >
       {props.children}

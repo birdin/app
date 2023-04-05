@@ -1,11 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import Column from "./Column";
 import { GlobalContext } from "../../../context/GlobalContext";
+import { useParams } from "react-router-dom";
 
 const Board = () => {
   //const [data, setData] = usedata(initialData);
   const { data, setData } = useContext(GlobalContext);
+  //get params from router
+  const {id} = useParams();
+  console.log(id)
+
 
 
   const onDragEnd = (result: any) => {
@@ -88,6 +93,10 @@ const Board = () => {
             const tasks = column.taskIds.map(
               (taskId:any) => data.tasks[taskId]
             );
+
+            //get tasks with category_id == id
+            const resp = tasks.filter(task => task.categoryId === id)
+            console.log(resp)
 
             return ( 
               <Column key={column.id} tasks={tasks} column={column}/>

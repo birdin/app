@@ -3,35 +3,41 @@ import { useContext } from "react";
 import ProjectItem from "./ProjectItem";
 import { useInput } from "../../hooks/useInput";
 import { GlobalContext } from "../../context/GlobalContext";
+import { ProjectPageHeader } from "../Header";
+import { SearchFilter } from "../Search";
+import { AddButton } from "../Button";
 
 const ProjectList = () => {
-  const searchState = useInput("text");
+  const {value, onChange, type} = useInput("text");
   const { projects } = useContext(GlobalContext);
   console.log(projects);
   return (
-    <>
-      <div className="ProjectPageHeader">
-        <div>
+    <div className="fluid-container">
+      <ProjectPageHeader>
+        <>
+          <div>
             <h1>Projects</h1>
             <p>List all projects</p>
-        </div>
-        <div>
-            <input {...searchState} />
-        </div>
-        <div>
-            <button>Create a project</button>
-        </div>
-      </div>
+          </div>
+          <div>
+            <SearchFilter searchState={{value, onChange, type}} />
+          </div>
+          <div>
+            <AddButton />
+          </div>
+        </>
+      </ProjectPageHeader>
+
       <div>
         {projects
           .filter((project) => {
             return (
               project.name
                 .toLowerCase()
-                .includes(searchState.value.toLowerCase()) ||
+                .includes(value.toLowerCase()) ||
               project.description
                 .toLowerCase()
-                .includes(searchState.value.toLowerCase())
+                .includes(value.toLowerCase())
             );
           })
           .map((project) => {
@@ -45,7 +51,7 @@ const ProjectList = () => {
             );
           })}
       </div>
-    </>
+    </div>
   );
 };
 
