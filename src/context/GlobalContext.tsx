@@ -15,6 +15,9 @@ export const GlobalContext = createContext({
   dispatchProjects: (props: any) => {},
   getTasksByProject: (id: string) => {},
   updateTask: (task: any) => {},
+  createProjectData: (id: string) => {},
+  setDataTaks: (id: string) => {},
+
 });
 
 function initEvents() {
@@ -22,31 +25,33 @@ function initEvents() {
   const parsedEvents = storageEvents
     ? JSON.parse(storageEvents)
     : {
-        tasks: {},
-        columns: {
-          "column-1": {
-            id: "column-1",
-            title: "To do",
-            taskIds: [],
+        "": {
+          tasks: {},
+          columns: {
+            "column-1": {
+              id: "column-1",
+              title: "To do",
+              taskIds: [],
+            },
+            "column-2": {
+              id: "column-2",
+              title: "Today",
+              taskIds: [],
+            },
+            "column-3": {
+              id: "column-3",
+              title: "In progress",
+              taskIds: [],
+            },
+            "column-4": {
+              id: "column-4",
+              title: "Done",
+              taskIds: [],
+            },
           },
-          "column-2": {
-            id: "column-2",
-            title: "Today",
-            taskIds: [],
-          },
-          "column-3": {
-            id: "column-3",
-            title: "In progress",
-            taskIds: [],
-          },
-          "column-4": {
-            id: "column-4",
-            title: "Done",
-            taskIds: [],
-          },
+          columnOrder: ["column-1", "column-2", "column-3", "column-4"],
         },
         // Facilitate reordering of the columns
-        columnOrder: ["column-1", "column-2", "column-3", "column-4"],
       };
   return parsedEvents;
 }
@@ -73,24 +78,17 @@ const initProjects = () => {
   const storageProjects = localStorage.getItem("projects");
   const parsedProjects = storageProjects
     ? JSON.parse(storageProjects)
-    : [
-        {
-          name: "Project 1",
-          description: "This is a project",
-          label: "pro-1",
-          id: "1",
-        },
-        {
-          name: "Project 2",
-          description: "This is a project but with more elements",
-          id: "2",
-          label: "pro-2",
-          category: "category-1",
-        },
-      ];
+    : [];
   return parsedProjects;
 };
 
+const initProjectData = () => {
+  const storageProjects = localStorage.getItem("projectData");
+  const parsedProjects = storageProjects
+    ? JSON.parse(storageProjects)
+    : {};
+  return parsedProjects;
+};
 
 export const GlobalProvider = (props: any) => {
   const [data, setData] = useState(initEvents);
@@ -101,13 +99,23 @@ export const GlobalProvider = (props: any) => {
     initProjects
   );
 
+  const [projectData, setProjectData] = useState(initProjectData);
+
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(data));
+    const aux = {...projectData, [data.projectID]: data};
+    setProjectData(aux);
+    localStorage.setItem("projectData", JSON.stringify(aux));
   }, [data]);
 
   useEffect(() => {
     localStorage.setItem("projects", JSON.stringify(projects));
   }, [projects]);
+
+  useEffect(() => {
+    localStorage.setItem("projectData", JSON.stringify(projectData));
+    }, [projectData]);
+
 
   const onOpen = (props: boolean) => {
     setIsOpen(props);
@@ -142,18 +150,58 @@ export const GlobalProvider = (props: any) => {
 
   const updateTask = (task: any) => {
     setData({
-        ...data,
-        tasks: {
-            ...data.tasks,
-            [task.id]: task,
-        },
+      ...data,
+      tasks: {
+        ...data.tasks,
+        [task.id]: task,
+      },
     });
-    };
-
+  };
 
   const getTask = (id: string) => {
     return data?.tasks[id];
   };
+
+  const createProjectData = (id: string) => {
+    const aux = {
+      projectID: id,
+      tasks: {},
+      columns: {
+        "column-1": {
+          id: "column-1",
+          title: "To do",
+          taskIds: [],
+        },
+        "column-2": {
+          id: "column-2",
+          title: "Today",
+          taskIds: [],
+        },
+        "column-3": {
+          id: "column-3",
+          title: "In progress",
+          taskIds: [],
+        },
+        "column-4": {
+          id: "column-4",
+          title: "Done",
+          taskIds: [],
+        },
+      }, // Facilitate reordering of the columns
+      columnOrder: ["column-1", "column-2", "column-3", "column-4"],
+    };
+    setProjectData({
+      ...projectData,
+      [id]: {
+        ...aux,
+      },
+    });
+  };
+
+  const setDataTaks = (id: string) => {
+    console.log(projectData[id]);
+    setData(projectData[id]);
+  }
 
   return (
     <GlobalContext.Provider
@@ -167,7 +215,9 @@ export const GlobalProvider = (props: any) => {
         projects: projects,
         dispatchProjects: dispatchProjects,
         getTasksByProject: getTasksByProject,
-        updateTask: updateTask
+        updateTask: updateTask,
+        createProjectData,
+        setDataTaks,
       }}
     >
       {props.children}

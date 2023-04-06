@@ -5,7 +5,7 @@ import { GlobalContext } from "../../context/GlobalContext";
 import { useInput } from "../../hooks/useInput";
 
 const ProjectForm = () => {
-    const { projects, dispatchProjects } = useContext(GlobalContext);
+    const { projects, dispatchProjects, createProjectData } = useContext(GlobalContext);
 
   const name = useInput("text");
   const description = useInput("text");
@@ -20,6 +20,7 @@ const ProjectForm = () => {
             id: uuidv4()
         }
         dispatchProjects({type: "ADD_PROJECT", payload: project});
+        createProjectData(project.id);
 
     };
 

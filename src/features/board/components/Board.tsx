@@ -1,4 +1,7 @@
-import { useContext, useMemo} from "react";
+
+ 
+
+import { useContext, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import Column from "./Column";
 import { GlobalContext } from "../../../context/GlobalContext";
@@ -6,12 +9,14 @@ import { useParams } from "react-router-dom";
 
 const Board = () => {
   //const [data, setData] = usedata(initialData);
-  const { data, setData } = useContext(GlobalContext);
-  //get params from router
-  const {id} = useParams();
-  console.log(id)
+  const { data, setData, setDataTaks } = useContext(GlobalContext);
+  const {id} = useParams()
 
-
+  useEffect(() => {
+    if(id){
+      setDataTaks(id);
+    }
+  }, [id])
 
   const onDragEnd = (result: any) => {
     const { destination, source, draggableId } = result;
@@ -88,18 +93,15 @@ const Board = () => {
     <>
       <div className="task-board">
         <DragDropContext onDragEnd={onDragEnd}>
-          {data.columnOrder.map((columnId:any) => {
+          {data?.columnOrder?.map((columnId:any) => {
+            if(!data.columns) return null;
             const column = data.columns[columnId];
             const tasks = column.taskIds.map(
               (taskId:any) => data.tasks[taskId]
             );
 
-            //get tasks with category_id == id
-            const resp = useMemo(() => tasks.filter((task:any) => task.projectId === id), [data])
-          
-
             return ( 
-              <Column key={column.id} tasks={resp} column={column}/>
+              <Column key={column.id} tasks={tasks} column={column}/>
             )
           })
           }
