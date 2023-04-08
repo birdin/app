@@ -49,7 +49,7 @@ const ModalViewTask = ({task}:Props) => {
     navigation(-1);
   }
 
-  const val = useDebounce(updatedTask, 3000);
+  const val = useDebounce(updatedTask, 1000);
 
   useEffect(() => {
     updateTask(val)

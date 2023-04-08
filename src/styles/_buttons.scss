@@ -59,6 +59,8 @@ button {
     background-color: #4b974b;
     color: white;
     font-size: 0.9em;
+    text-decoration: none;
+
     &::before {
         content: "+";
         margin-right: 0.5rem;

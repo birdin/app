@@ -1,6 +1,3 @@
-
- 
-
 import { useContext, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import Column from "./Column";
@@ -8,7 +5,6 @@ import { GlobalContext } from "../../../context/GlobalContext";
 import { useParams } from "react-router-dom";
 
 const Board = () => {
-  //const [data, setData] = usedata(initialData);
   const { data, setData, setDataTaks } = useContext(GlobalContext);
   const {id} = useParams()
 

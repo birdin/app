@@ -4,6 +4,9 @@ import "react-toastify/dist/ReactToastify.css";
 import ModalViewTask from "./components/Modal/ModalViewTask";
 //import { Main } from "./components/test/MainPage";
 import { Modal } from "./components/test/Modal";
+import CreateProject from "./pages/CreateProject";
+import EditProject from "./pages/EditProject";
+import ProjectHomepage from "./pages/ProjectHomepage";
 import Projects from "./pages/Projects";
 import Task from "./pages/Task";
 import ViewTasks from "./pages/ViewTasks";
@@ -17,12 +20,15 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Projects />} />
+        <Route path="/create-project" element={<CreateProject/>} />
         <Route path="/task" element={<div>Task</div>} />
         <Route path="/project/tasks/" element={<ViewTasks />} />
+        <Route path="/project/:id" element={<ProjectHomepage />} />
+        <Route path="project/:id/edit" element={<EditProject />} />
       </Routes>
 
       <Routes location={background || location}>
-        <Route path="/project/:id" element={<Task />}>
+        <Route path="/project/:id/tasks" element={<Task />}>
           <Route path=":id_task/:task_name" element={<ViewTasks />} />
         </Route>
       </Routes>

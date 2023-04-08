@@ -6,7 +6,8 @@ const ModalForm = ({}) => {
   const { modal } = useContext(GlobalContext);
   const { open, onOpen } = modal;
 
-  if (!open) return null;
+  if (open === false) return null;
+  console.log(open, "Open")
 
   return (
     <div>

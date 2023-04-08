@@ -12,7 +12,7 @@ const ProjectList = () => {
   const { projects } = useContext(GlobalContext);
   console.log(projects);
   return (
-    <div className="fluid-container">
+    <div className="fluid-container narrow-padding">
       <ProjectPageHeader>
         <>
           <div>
@@ -23,7 +23,7 @@ const ProjectList = () => {
             <SearchFilter searchState={{value, onChange, type}} />
           </div>
           <div>
-            <AddButton />
+            <AddButton /> 
           </div>
         </>
       </ProjectPageHeader>

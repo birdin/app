@@ -42,3 +42,9 @@
     }
 }
 
+.narrow-padding {
+    padding: 1rem;
+    @media (min-width: $md) {
+        padding: 1rem 3rem;
+    }
+}

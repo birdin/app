@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState, useReducer } from "react";
-import { init, initialState } from "./data/defaultData";
+import { initialState } from "./data/defaultData";
 
 export const GlobalContext = createContext({
   state: initialState,
@@ -8,7 +8,7 @@ export const GlobalContext = createContext({
     onOpen: (props: boolean) => {},
   },
   addData: (task: any) => {},
-  data: {},
+  data: {columns:{}, columnOrder:'', tasks:'', projectID:''},
   setData: (props: any) => {},
   getTask: (id: string) => {},
   projects: [{ name: "", label: "", id: "", description: "" }],
@@ -92,7 +92,7 @@ const initProjectData = () => {
 
 export const GlobalProvider = (props: any) => {
   const [data, setData] = useState(initEvents);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [projects, dispatchProjects] = useReducer(
     savedProjectsReducer,
     [],
@@ -199,7 +199,10 @@ export const GlobalProvider = (props: any) => {
   };
 
   const setDataTaks = (id: string) => {
-    console.log(projectData[id]);
+    if (!projectData[id]) {
+        setData({})
+        return
+    }
     setData(projectData[id]);
   }
 
