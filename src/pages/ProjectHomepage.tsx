@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { ProjectHeader } from "../components/Header";
@@ -6,6 +5,7 @@ import { Navbar } from "../components/Navbar";
 
 const ProjectHomepage = () => {
   const { id } = useParams();
+
   return (
     <>
       <Navbar />

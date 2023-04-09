@@ -25,6 +25,7 @@ function App() {
         <Route path="/project/tasks/" element={<ViewTasks />} />
         <Route path="/project/:id" element={<ProjectHomepage />} />
         <Route path="project/:id/edit" element={<EditProject />} />
+        <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
 
       <Routes location={background || location}>
@@ -38,6 +39,8 @@ function App() {
           <Route path="/project/:id/modal/:id" element={<ViewTasks />} />
         </Routes>
       )}
+
+
       <ToastContainer />
     </div>
   );
