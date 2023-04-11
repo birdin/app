@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ModalViewTask from "./components/Modal/ModalViewTask";
@@ -15,31 +15,27 @@ import "./styles/index.scss";
 function App() {
   const location = useLocation();
   const background = location.state && location.state.background;
-
   return (
     <div className="App">
-      <Routes>
+      <Routes location={background || location}>
         <Route path="/" element={<Projects />} />
-        <Route path="/create-project" element={<CreateProject/>} />
+        <Route path="/create-project" element={<CreateProject />} />
         <Route path="/task" element={<div>Task</div>} />
         <Route path="/project/tasks/" element={<ViewTasks />} />
         <Route path="/project/:id" element={<ProjectHomepage />} />
         <Route path="project/:id/edit" element={<EditProject />} />
-        <Route path="*" element={<h1>Page not found</h1>} />
-      </Routes>
+        <Route path="/404" element={<h1>Page not found</h1>} />
 
-      <Routes location={background || location}>
         <Route path="/project/:id/tasks" element={<Task />}>
           <Route path=":id_task/:task_name" element={<ViewTasks />} />
         </Route>
-      </Routes>
 
-      {background && (
-        <Routes>
+        {background && (
           <Route path="/project/:id/modal/:id" element={<ViewTasks />} />
-        </Routes>
-      )}
+        )}
 
+        <Route path="*" element={<h1>Page not found</h1>} />
+      </Routes>
 
       <ToastContainer />
     </div>

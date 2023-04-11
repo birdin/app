@@ -8,7 +8,7 @@ export const GlobalContext = createContext({
     onOpen: (props: boolean) => {},
   },
   addData: (task: any) => {},
-  data: {columns:{}, columnOrder:'', tasks:'', projectID:''},
+  data: {columns:{}, columnOrder:'', tasks:{}, projectID:''},
   setData: (props: any) => {},
   getTask: (id: string) => {},
   projects: [{ name: "", label: "", id: "", description: "" }],
@@ -17,7 +17,7 @@ export const GlobalContext = createContext({
   updateTask: (task: any) => {},
   createProjectData: (id: string) => {},
   setDataTaks: (id: string) => {},
-
+  setProjectId: (id: string) => {},
 });
 
 function initEvents() {
@@ -93,6 +93,7 @@ const initProjectData = () => {
 export const GlobalProvider = (props: any) => {
   const [data, setData] = useState(initEvents);
   const [isOpen, setIsOpen] = useState(false);
+  const [projectId, setProjectId] = useState("");
   const [projects, dispatchProjects] = useReducer(
     savedProjectsReducer,
     [],
@@ -116,6 +117,10 @@ export const GlobalProvider = (props: any) => {
     localStorage.setItem("projectData", JSON.stringify(projectData));
     }, [projectData]);
 
+  useEffect(() => {
+    console.log("Oladijajú");
+    setDataTaks(projectId);
+  }, [projectId]);
 
   const onOpen = (props: boolean) => {
     setIsOpen(props);
@@ -200,7 +205,7 @@ export const GlobalProvider = (props: any) => {
 
   const setDataTaks = (id: string) => {
     if (!projectData[id]) {
-        setData({})
+        setData({projectID: '-1'})
         return
     }
     setData(projectData[id]);
@@ -221,6 +226,7 @@ export const GlobalProvider = (props: any) => {
         updateTask: updateTask,
         createProjectData,
         setDataTaks,
+        setProjectId
       }}
     >
       {props.children}

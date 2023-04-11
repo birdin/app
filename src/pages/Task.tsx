@@ -1,20 +1,23 @@
-import { ProjectHeader } from '../components/Header'
-import DashboardLayout from '../layouts/DashboardLayout'
-import { Board } from '../features/board'
-import { ModalForm } from '../components/Modal'
-import { Outlet } from 'react-router-dom'
+import { ProjectHeader } from "../components/Header";
+import DashboardLayout from "../layouts/DashboardLayout";
+import { Board } from "../features/board";
+import { ModalForm } from "../components/Modal";
+import { Outlet } from "react-router-dom";
+import RouterPage from "../hoc/RouterPage";
 
 const Task = () => {
   return (
-    <DashboardLayout>
-        <ProjectHeader/>
+    <RouterPage>
+      <DashboardLayout>
+        <ProjectHeader />
         <div className="wide-container fill-container">
-          <Board/>
+          <Board />
         </div>
-        <ModalForm/>
+        <ModalForm />
         <Outlet />
-    </DashboardLayout>
-  )
-}
+      </DashboardLayout>
+    </RouterPage>
+  );
+};
 
-export default Task
+export default Task;
