@@ -72,89 +72,98 @@ export const init = {
   columnOrder: ["column-1", "column-2", "column-3", "column-4"],
 };
 
-
 export const ProjectList = [
-    {
-      id: 1,
-      name: "La Forma",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.",
-      status: "active",
-      type: "public",
-      img: "https://assets.codigohabil.com/img/laforma.png",
-      members: [
-        {
-          id: 1,
-          name: "Carlos",
-          email: "",
-          avatar: "https://i.pravatar.cc/150?img=1",
-        },
-        {
-          id: 2,
-          name: "Juan",
-          email: "",
-          avatar: "https://i.pravatar.cc/150?img=2",
-        },
-      ],
-    },
-  ];
-
-
+  {
+    id: 1,
+    name: "La Forma",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.",
+    status: "active",
+    type: "public",
+    img: "https://assets.codigohabil.com/img/laforma.png",
+    members: [
+      {
+        id: 1,
+        name: "Carlos",
+        email: "",
+        avatar: "https://i.pravatar.cc/150?img=1",
+      },
+      {
+        id: 2,
+        name: "Juan",
+        email: "",
+        avatar: "https://i.pravatar.cc/150?img=2",
+      },
+    ],
+  },
+];
 
 export const initialState = {
-    user: {
-      id: 1,
-      name: "Carlos",
-      email: "",
-      avatar: "https://i.pravatar.cc/150?img=1",
-      projects: [
-        {
-          id: 1,
-          name: "La Forma",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.",
-          status: "active",
-          type: "public",
-          img: "https://assets.codigohabil.com/img/laforma.png",
-          deadline: "10/12/2023",
-          members: [],
-          categories: [
-            {
-              id: 1,
-              name: "Architecture",
-            },
-            {
-              id: 2,
-              name: "Web",
-            },
-          ],
-          tasks: [],
-        },
-      ],
-    },
-  };
+  user: {
+    id: 1,
+    name: "Carlos",
+    email: "",
+    avatar: "https://i.pravatar.cc/150?img=1",
+    projects: [
+      {
+        id: 1,
+        name: "La Forma",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.",
+        status: "active",
+        type: "public",
+        img: "https://assets.codigohabil.com/img/laforma.png",
+        deadline: "10/12/2023",
+        members: [],
+        categories: [
+          {
+            id: 1,
+            name: "Architecture",
+          },
+          {
+            id: 2,
+            name: "Web",
+          },
+        ],
+        tasks: [],
+      },
+    ],
+  },
+};
 
-  const columns = {
-    'project-1':{
-      'column-1':{
-        id: 'column-1',
-        title: 'To do',
-        taskIds: [],
-      },
-      'column-2':{
-        id: 'column-2',
-        title: 'Today',
-        taskIds: [],
-      },
-      'column-3':{
-        id: 'column-3',
-        title: 'In progress',
-        taskIds: [],
-      },
-      'column-4':{
-        id: 'column-4',
-        title: 'Done',
-        taskIds: [],
-      },
-    }
-  }
+const columns = {
+  "project-1": {
+    "column-1": {
+      id: "column-1",
+      title: "To do",
+      taskIds: [],
+    },
+    "column-2": {
+      id: "column-2",
+      title: "Today",
+      taskIds: [],
+    },
+    "column-3": {
+      id: "column-3",
+      title: "In progress",
+      taskIds: [],
+    },
+    "column-4": {
+      id: "column-4",
+      title: "Done",
+      taskIds: [],
+    },
+  },
+};
+
+export const notesInit =
+  {
+    category: "",
+    created: "",
+    favorite: false,
+    id: "",
+    lastUpdated: "",
+    text: "",
+    project:""
+}
+

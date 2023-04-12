@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ModalViewTask from "./components/Modal/ModalViewTask";
 //import { Main } from "./components/test/MainPage";
 import { Modal } from "./components/test/Modal";
+import Notes from "./pages/Notes";
 import CreateProject from "./pages/CreateProject";
 import EditProject from "./pages/EditProject";
 import ProjectHomepage from "./pages/ProjectHomepage";
@@ -24,6 +25,7 @@ function App() {
         <Route path="/project/tasks/" element={<ViewTasks />} />
         <Route path="/project/:id" element={<ProjectHomepage />} />
         <Route path="project/:id/edit" element={<EditProject />} />
+        <Route path="/project/:id/notes" element={<Notes/>} />
         <Route path="/404" element={<h1>Page not found</h1>} />
 
         <Route path="/project/:id/tasks" element={<Task />}>

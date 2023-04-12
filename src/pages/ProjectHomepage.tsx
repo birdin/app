@@ -7,12 +7,20 @@ import { GlobalContext } from "../context/GlobalContext";
 import RouterPage from "../hoc/RouterPage";
 
 const ProjectHomepage = () => {
-  const { data } = useContext(GlobalContext);
+  const { data, notes } = useContext(GlobalContext);
   const { id } = useParams();
 
-  console.log(data.tasks);
   const keys = data.tasks !== undefined ? Object.keys(data.tasks) : [""];
   const li = [];
+  let note = {}
+  for(let i = 0; i < notes.length; i++){
+    if(notes[i].project_id === id){
+      note = notes[i]
+      break;
+    }
+  }
+
+  console.log(note, notes)
 
   for (let i = keys.length - 1; i > keys.length - 6 && i > 0; --i) {
     const key = keys[i];
@@ -29,6 +37,8 @@ const ProjectHomepage = () => {
         <Link to={`/project/${id}/tasks`}>Tasks</Link>
         <Link to={`/project/${id}/edit`}>Edit</Link>
         <ul>{li}</ul>
+        <h3>Notas</h3>
+        <Link to={`/project/${id}/notes`}>Ver todas</Link>
       </div>
     </RouterPage>
   );

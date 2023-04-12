@@ -8,7 +8,7 @@ export const GlobalContext = createContext({
     onOpen: (props: boolean) => {},
   },
   addData: (task: any) => {},
-  data: {columns:{}, columnOrder:'', tasks:{}, projectID:''},
+  data: { columns: {}, columnOrder: "", tasks: {}, projectID: "" },
   setData: (props: any) => {},
   getTask: (id: string) => {},
   projects: [{ name: "", label: "", id: "", description: "" }],
@@ -18,6 +18,8 @@ export const GlobalContext = createContext({
   createProjectData: (id: string) => {},
   setDataTaks: (id: string) => {},
   setProjectId: (id: string) => {},
+  notes: [{ id: "", title: "", content: "", date: "", project_id: "" }],
+  dispatchNotes: (props: any) => {},
 });
 
 function initEvents() {
@@ -74,20 +76,40 @@ const savedProjectsReducer = (state: any, action: any) => {
   }
 };
 
+const savedNotesReducer = (state: any, action: any) => {
+  switch (action.type) {
+    case "ADD_NOTE":
+      return [...state, action.payload];
+    case "REMOVE_NOTE":
+      return state.filter((note: any) => note.id !== action.payload);
+    case "UPDATE_NOTE":
+      return state.map((note: any) => {
+        if (note.id === action.payload.id) {
+          return action.payload;
+        }
+        return note;
+      });
+    default:
+      return state;
+  }
+};
+
 const initProjects = () => {
   const storageProjects = localStorage.getItem("projects");
-  const parsedProjects = storageProjects
-    ? JSON.parse(storageProjects)
-    : [];
+  const parsedProjects = storageProjects ? JSON.parse(storageProjects) : [];
   return parsedProjects;
 };
 
 const initProjectData = () => {
   const storageProjects = localStorage.getItem("projectData");
-  const parsedProjects = storageProjects
-    ? JSON.parse(storageProjects)
-    : {};
+  const parsedProjects = storageProjects ? JSON.parse(storageProjects) : {};
   return parsedProjects;
+};
+
+const initNotes = () => {
+  const storageNotes = localStorage.getItem("notes");
+  const parsedNotes = storageNotes ? JSON.parse(storageNotes) : [];
+  return parsedNotes;
 };
 
 export const GlobalProvider = (props: any) => {
@@ -99,12 +121,13 @@ export const GlobalProvider = (props: any) => {
     [],
     initProjects
   );
+  const [notes, dispatchNotes] = useReducer(savedNotesReducer, [], initNotes);
 
   const [projectData, setProjectData] = useState(initProjectData);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(data));
-    const aux = {...projectData, [data.projectID]: data};
+    const aux = { ...projectData, [data.projectID]: data };
     setProjectData(aux);
     localStorage.setItem("projectData", JSON.stringify(aux));
   }, [data]);
@@ -115,10 +138,14 @@ export const GlobalProvider = (props: any) => {
 
   useEffect(() => {
     localStorage.setItem("projectData", JSON.stringify(projectData));
-    }, [projectData]);
+  }, [projectData]);
 
   useEffect(() => {
-    console.log("Oladijajú");
+    localStorage.setItem("notes", JSON.stringify(notes));
+}, [notes]);
+
+
+  useEffect(() => {
     setDataTaks(projectId);
   }, [projectId]);
 
@@ -205,11 +232,11 @@ export const GlobalProvider = (props: any) => {
 
   const setDataTaks = (id: string) => {
     if (!projectData[id]) {
-        setData({projectID: '-1'})
-        return
+      setData({ projectID: "-1" });
+      return;
     }
     setData(projectData[id]);
-  }
+  };
 
   return (
     <GlobalContext.Provider
@@ -226,7 +253,9 @@ export const GlobalProvider = (props: any) => {
         updateTask: updateTask,
         createProjectData,
         setDataTaks,
-        setProjectId
+        setProjectId,
+        notes,
+        dispatchNotes,
       }}
     >
       {props.children}
