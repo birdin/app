@@ -1,13 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useInput } from "../hooks/useInput";
 import { Navbar } from "../components/Navbar";
 import { GlobalContext } from "../context/GlobalContext";
 import RouterPage from "../hoc/RouterPage";
 import { useParams } from "react-router-dom";
+import NotesEditor from "../features/Notes";
 
 const Notes = () => {
   const { notes, dispatchNotes } = useContext(GlobalContext);
   const { id } = useParams();
+
   const newNote = {
     id: new Date().getTime(),
     project_id: id,
@@ -31,8 +33,6 @@ const Notes = () => {
   };
 
 
-
-
   return (
     <RouterPage>
       <Navbar />
@@ -54,6 +54,9 @@ const Notes = () => {
           </div>
           <button type="submit">Submit</button>
         </form>
+      </div>
+      <div className="container">
+        <NotesEditor/>
       </div>
     </RouterPage>
   );
