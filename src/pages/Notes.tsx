@@ -68,14 +68,12 @@ const Notes = () => {
     <li key={note.id} id={note.id} onClick={onClick}>{note.title}</li>
   ));
 
-  console.log(note);
-
   return (
     <RouterPage>
       <Navbar />
       <div className="container">
         <ul>
-          {li}
+          {li.reverse()}
         </ul>
       </div>
       <div className="container">

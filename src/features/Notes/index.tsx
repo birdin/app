@@ -18,7 +18,8 @@ const NotesEditor = ({ note, setNote, update, deleteFuction }: Props) => {
   const title = useInput("text", note.title);
   const [contentInput, setContentInput] = useState(note.content);
 
-  const updatedNote = useDebounce(contentInput, 5000)
+  const updatedNote = useDebounce(contentInput, 2000)
+  const updatedTitle = useDebounce(title.value, 2000)
 
   useEffect(() => {
     console.log("Was updated", contentInput);
@@ -29,7 +30,7 @@ const NotesEditor = ({ note, setNote, update, deleteFuction }: Props) => {
       updateTime: new Date(),
     };
     update(newNote);
-  }, [updatedNote]);
+  }, [updatedNote, updatedTitle]);
 
   const onRemove = (e: { preventDefault: () => void }) => {
     e.preventDefault();
