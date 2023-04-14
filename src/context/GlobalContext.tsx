@@ -81,10 +81,10 @@ const savedNotesReducer = (state: any, action: any) => {
     case "ADD_NOTE":
       return [...state, action.payload];
     case "REMOVE_NOTE":
-      return state.filter((note: any) => note.id !== action.payload);
+      return state.filter((note: any) => note.id != action.payload);
     case "UPDATE_NOTE":
       return state.map((note: any) => {
-        if (note.id === action.payload.id) {
+        if (note.id == action.payload.id) {
           return action.payload;
         }
         return note;
@@ -142,8 +142,8 @@ export const GlobalProvider = (props: any) => {
 
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
-}, [notes]);
-
+    }, [notes]);
+    
 
   useEffect(() => {
     setDataTaks(projectId);

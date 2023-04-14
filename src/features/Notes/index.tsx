@@ -1,12 +1,55 @@
-import React from 'react'
-import Note from './component/NoteEditor'
+import { useEffect, useState } from "react";
+import { useDebounce } from "../../hooks/useDebounce";
+import { useInput } from "../../hooks/useInput";
+import Note from "./component/NoteEditor";
 
-const NotesEditor = () => {
+type Props = {
+  note: any;
+  setNote: any;
+  update: any;
+  deleteFuction: any;
+};
+
+const NotesEditor = ({ note, setNote, update, deleteFuction }: Props) => {
+  if (note === undefined) {
+    return null;
+  }
+
+  const title = useInput("text", note.title);
+  const [contentInput, setContentInput] = useState(note.content);
+
+  const updatedNote = useDebounce(contentInput, 5000)
+
+  useEffect(() => {
+    console.log("Was updated", contentInput);
+    const newNote = {
+      ...note,
+      title: title.value,
+      content: contentInput,
+      updateTime: new Date(),
+    };
+    update(newNote);
+  }, [updatedNote]);
+
+  const onRemove = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    console.log("Removing note");
+    deleteFuction(note)
+  };
+
   return (
     <div>
-        <Note />
+      <div className="title-group">
+        <input {...title} />  
+      </div>
+      <div>
+        <Note content={note.content} updateContent={setContentInput} />
+      </div>
+      <div className="div">
+        <button onClick={onRemove}>Remove it</button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default NotesEditor
+export default NotesEditor;
