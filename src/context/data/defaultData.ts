@@ -90,7 +90,7 @@ export const ProjectList = [
       },
       {
         id: 2,
-        name: "Juan",
+        name: "María",
         email: "",
         avatar: "https://i.pravatar.cc/150?img=2",
       },
