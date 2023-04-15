@@ -12,20 +12,25 @@ const ProjectHomepage = () => {
 
   const keys = data.tasks !== undefined ? Object.keys(data.tasks) : [""];
   const li = [];
-  let note = {}
-  for(let i = 0; i < notes.length; i++){
-    if(notes[i].project_id === id){
-      note = notes[i]
+  let note = {};
+  for (let i = 0; i < notes.length; i++) {
+    if (notes[i].project_id === id) {
+      note = notes[i];
       break;
     }
   }
 
-  console.log(note, notes)
+  console.log(note, notes);
 
   for (let i = keys.length - 1; i > keys.length - 6 && i > 0; --i) {
     const key = keys[i];
     const task = data.tasks[key];
-    li.push(<li key={i}> {task?.name} </li>);
+    li.push(
+      <li key={i} className="section-tasls-list__item">
+        {" "}
+        {task?.name}{" "}
+      </li>
+    );
   }
 
   return (
@@ -33,12 +38,36 @@ const ProjectHomepage = () => {
       <Navbar />
       <ProjectHeader />
       <div className="fluid-container">
-        <h1>Project Homepage</h1>
-        <Link to={`/project/${id}/tasks`}>Tasks</Link>
-        <Link to={`/project/${id}/edit`}>Edit</Link>
-        <ul>{li}</ul>
-        <h3>Notas</h3>
-        <Link to={`/project/${id}/notes`}>Ver todas</Link>
+        <div className="grid-2-columns">
+          <div className="section-wrapper">
+            <h2 className="section-header-title">
+                <div className="status-indicator status-indicator--in-progress"></div>
+                Tasks</h2>
+            <p className="section-header-subtitle">List of the last tasks</p>
+            <div className="section-container">
+              <ul className="section-task-list">{li}</ul>
+              <Link to={`/project/${id}/tasks`}>Tasks</Link>
+              <Link to={`/project/${id}/edit`}>Edit</Link>
+            </div>
+          </div>
+          <div className="section-wrapper">
+            <h2 className="section-header-title">
+                <div className="status-indicator status-indicator--in-progress"></div>
+                Notes
+            </h2>
+            <p className="section-header-subtitle">
+              Notes and importan information
+            </p>
+            <div className="section-container">
+              {note ? (
+                <div className="section--notes-container">{note?.content}</div>
+              ) : (
+                <p>No notes</p>
+              )}
+              <Link to={`/project/${id}/notes`}>Ver todas</Link>
+            </div>
+          </div>
+        </div>
       </div>
     </RouterPage>
   );

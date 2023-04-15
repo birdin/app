@@ -51,3 +51,13 @@
         padding: 1rem 7rem;
     }
 }
+
+.grid-2-columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    @media (min-width: $md) {
+        grid-gap: 2;
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
