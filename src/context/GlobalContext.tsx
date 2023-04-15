@@ -153,7 +153,7 @@ export const GlobalProvider = (props: any) => {
     setIsOpen(props);
   };
 
-  const getTasksByProject = (id: string) => {
+  const getTasksByProject = (id: string) => {    
     const tasks = data.filter((el: any) => el.project == id);
     return tasks;
   };
@@ -191,6 +191,7 @@ export const GlobalProvider = (props: any) => {
   };
 
   const getTask = (id: string) => {
+    if(data.projectID == null) return;
     return data?.tasks[id];
   };
 
@@ -232,7 +233,7 @@ export const GlobalProvider = (props: any) => {
 
   const setDataTaks = (id: string) => {
     if (!projectData[id]) {
-      setData({ projectID: "-1" });
+      setData({ projectID: null });
       return;
     }
     setData(projectData[id]);

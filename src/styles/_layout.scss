@@ -45,6 +45,9 @@
 .narrow-padding {
     padding: 1rem;
     @media (min-width: $md) {
-        padding: 1rem 3rem;
+        padding: 1rem 5rem;
+    }
+    @media (min-width: $lg) {
+        padding: 1rem 7rem;
     }
 }
