@@ -5,6 +5,7 @@ import { ProjectHeader } from "../components/Header";
 import { Navbar } from "../components/Navbar";
 import { GlobalContext } from "../context/GlobalContext";
 import RouterPage from "../hoc/RouterPage";
+import { AsideNav } from "../components/Aside";
 
 const ProjectHomepage = () => {
   const { data, notes } = useContext(GlobalContext);
@@ -36,39 +37,49 @@ const ProjectHomepage = () => {
   return (
     <RouterPage>
       <Navbar />
-      <ProjectHeader />
-      <div className="fluid-container">
-        <div className="grid-2-columns">
-          <div className="section-wrapper">
-            <h2 className="section-header-title">
-                <div className="status-indicator status-indicator--in-progress"></div>
-                Tasks</h2>
-            <p className="section-header-subtitle">List of the last tasks</p>
-            <div className="section-container">
-              <ul className="section-task-list">{li}</ul>
-              <Link to={`/project/${id}/tasks`}>Tasks</Link>
-              <Link to={`/project/${id}/edit`}>Edit</Link>
-            </div>
-          </div>
-          <div className="section-wrapper">
-            <h2 className="section-header-title">
-                <div className="status-indicator status-indicator--in-progress"></div>
-                Notes
-            </h2>
-            <p className="section-header-subtitle">
-              Notes and importan information
-            </p>
-            <div className="section-container">
-              {note ? (
-                <div className="section--notes-container">{note?.content}</div>
-              ) : (
-                <p>No notes</p>
-              )}
-              <Link to={`/project/${id}/notes`}>Ver todas</Link>
+      <main className="dashboard-layout">
+        <AsideNav id={id} />        
+        <div className="section-container__wrapper">
+          <ProjectHeader />
+          <div className="fluid-container">
+            <div className="grid-2-columns">
+              <div className="section-wrapper">
+                <h2 className="section-header-title">
+                  <div className="status-indicator status-indicator--in-progress"></div>
+                  Tasks
+                </h2>
+                <p className="section-header-subtitle">
+                  List of the last tasks
+                </p>
+                <div className="section-container">
+                  <ul className="section-task-list">{li}</ul>
+                  <Link to={`/project/${id}/tasks`}>Tasks</Link>
+                  <Link to={`/project/${id}/edit`}>Edit</Link>
+                </div>
+              </div>
+              <div className="section-wrapper">
+                <h2 className="section-header-title">
+                  <div className="status-indicator status-indicator--in-progress"></div>
+                  Notes
+                </h2>
+                <p className="section-header-subtitle">
+                  Notes and importan information
+                </p>
+                <div className="section-container">
+                  {note ? (
+                    <div className="section--notes-container">
+                      {note?.content}
+                    </div>
+                  ) : (
+                    <p>No notes</p>
+                  )}
+                  <Link to={`/project/${id}/notes`}>Ver todas</Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </RouterPage>
   );
 };

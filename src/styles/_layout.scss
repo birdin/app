@@ -59,5 +59,27 @@
         grid-gap: 2;
         grid-template-columns: 1fr 1fr;
     }
-
 }
+
+.dashboard-layout {
+    display: flex;
+    height: calc(100vh - 45px);
+    overflow: hidden;
+}
+
+.nav-sidebar {
+    position: relative;
+    width: 60px;
+    border-right: 1px solid #d6d6d6;
+    ul {
+        padding: 0;
+    }
+    li a {
+        display: block;
+        background-color: red;
+        background-color: green;
+        border-bottom: 1px solid grey;
+        height: 4rem;
+    }
+}
+

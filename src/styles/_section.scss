@@ -1,5 +1,11 @@
+.section-container__wrapper {
+  flex: 1;
+  overflow: scroll;
+}
+
 .section-wrapper {
   margin: 0.5rem 0;
+  height: 100%;
   @media (min-width: $sm) {
     margin: 0.5rem 1rem;
   }
@@ -9,6 +15,7 @@
 }
 
 .section-container {
+  //background-color: white;
   background-color: #f7f7f7;
   padding: 1rem;
   @media (min-width: $sm) {
