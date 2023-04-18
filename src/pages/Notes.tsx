@@ -69,9 +69,9 @@ const Notes = () => {
     dispatchNotes({ type: "ADD_NOTE", payload: newNote });
   };
 
-  const li = filterNotes?.map((note) => (
-    <li key={note.id} id={note.id} onClick={onClick} className="notes-list__item">
-        {note.title}
+  const li = filterNotes?.map((item) => (
+    <li key={item.id} id={item.id} onClick={onClick} className={`notes-list__item ${item.id == note?.id ? 'active' : ''}`}>
+        {item.title}
     </li>
   ));
 
@@ -82,6 +82,10 @@ const Notes = () => {
         <AsideNav id={id} page="notes" />
         <div className="notes-list">
           <div className="fluid-container">
+            <NotesList>
+              {li.reverse()}
+            </NotesList>
+
             <div>
               <h1>Create Note</h1>
               <form onSubmit={onSubmit}>
@@ -97,9 +101,6 @@ const Notes = () => {
               </form>
             </div>
 
-            <NotesList>
-              {li.reverse()}
-            </NotesList>
           </div>
         </div>
         <div className="section-container__wrapper">

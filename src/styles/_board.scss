@@ -13,11 +13,14 @@
 
 .kanban-column__tasks {
     background-color: #F7F7F7;
-    padding: 1rem;
+    //padding: 1rem;
 }
 
 .kanban-column__tasks-container {
     min-height: 150px;
+    max-height: calc(100vh - 270px);
+    overflow: auto;
+    padding: 1rem;
 }
 
 .kanban-card {

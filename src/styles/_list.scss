@@ -46,6 +46,7 @@
 .notes-list {
   width: 280px;
   border-right: 1px solid #d6d6d6;
+  padding: 1rem 0;
 }
 
 .notes-list__container {
@@ -58,6 +59,11 @@
     border-bottom: 1px solid #d6d6d6;
     height: 50px;
     cursor: pointer;
+    color: #393939;
+    &.active {
+        font-weight: 600;
+        background-color: #e9f0f1;
+    }
     &:hover {
         background-color: #f3f3f3;
     }
