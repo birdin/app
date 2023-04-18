@@ -1,57 +1,67 @@
 .ProseMirror {
-    > * + * {
-      margin-top: 0.75em;
-    }
-  
-    ul,
-    ol {
-      padding: 0 1rem;
-    }
-    outline: none;
-
+  > * + * {
+    margin-top: 0.75em;
   }
+  ul,
+  ol {
+    padding: 0 1rem;
+  }
+  outline: none;
+}
 
+.bubble-menu {
+  display: flex;
+  background-color: #0d0d0d;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
 
-  
-  .bubble-menu {
-    display: flex;
-    background-color: #0D0D0D;
-    padding: 0.2rem;
-    border-radius: 0.5rem;
-  
-    button {
-      border: none;
-      background: none;
-      color: #FFF;
-      font-size: 0.85rem;
-      font-weight: 500;
-      padding: 0 0.2rem;
-      opacity: 0.6;
-  
-      &:hover,
-      &.is-active {
-        opacity: 1;
-      }
+  button {
+    border: none;
+    background: none;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0 0.2rem;
+    opacity: 0.6;
+
+    &:hover,
+    &.is-active {
+      opacity: 1;
     }
   }
-  
-  .floating-menu {
-    display: flex;
-    background-color: #0D0D0D10;
-    padding: 0.2rem;
-    border-radius: 0.5rem;
-  
-    button {
-      border: none;
-      background: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      padding: 0 0.2rem;
-      opacity: 0.6;
-  
-      &:hover,
-      &.is-active {
-        opacity: 1;
-      }
+}
+
+.floating-menu {
+  display: flex;
+  background-color: #0d0d0d10;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+
+  button {
+    border: none;
+    background: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0 0.2rem;
+    opacity: 0.6;
+
+    &:hover,
+    &.is-active {
+      opacity: 1;
     }
   }
+}
+
+.form-note__section {
+  padding: 1rem 0;
+}
+
+.title-group {
+  input {
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 2.4rem;
+    font-weight: 700;
+  }
+}

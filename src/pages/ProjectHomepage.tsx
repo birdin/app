@@ -38,7 +38,7 @@ const ProjectHomepage = () => {
     <RouterPage>
       <Navbar />
       <main className="dashboard-layout">
-        <AsideNav id={id} />        
+        <AsideNav id={id} page="home"/>        
         <div className="section-container__wrapper">
           <ProjectHeader />
           <div className="fluid-container">

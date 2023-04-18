@@ -39,7 +39,7 @@ const NotesEditor = ({ note, setNote, update, deleteFuction }: Props) => {
   };
 
   return (
-    <div>
+    <div className="form-note__section">
       <div className="title-group">
         <input {...title} />  
       </div>

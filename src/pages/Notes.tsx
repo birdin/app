@@ -6,18 +6,24 @@ import RouterPage from "../hoc/RouterPage";
 import { useParams } from "react-router-dom";
 import NotesEditor from "../features/Notes";
 import { v4 as uuidv4 } from "uuid";
-
+import { AsideNav } from "../components/Aside";
+import NotesList from "../features/Notes/component/NotesList";
+import { normalizeText } from "../utils/normalizeText";
 
 const Notes = () => {
   const { notes, dispatchNotes } = useContext(GlobalContext);
 
-  if(!notes) {
-    return null
+  if (!notes) {
+    return null;
   }
 
   const { id } = useParams();
-  const [note, setNote] = useState( notes.filter((note) => note.project_id === id)[0]);
-  const [filterNotes, setFilterNotes] = useState(notes.filter((note) => note.project_id === id));
+  const [note, setNote] = useState(
+    notes.filter((note) => note.project_id === id)[0]
+  );
+  const [filterNotes, setFilterNotes] = useState(
+    notes.filter((note) => note.project_id === id)
+  );
 
   useEffect(() => {
     setFilterNotes(notes?.filter((note) => note.project_id === id));
@@ -35,14 +41,13 @@ const Notes = () => {
     dispatchNotes({ type: "REMOVE_NOTE", payload: newNote.id });
   };
 
-
   const newNote = {
     id: uuidv4(),
     project_id: id,
     title: "",
     content: "",
     date: new Date(),
-    updateTime: new Date(), 
+    updateTime: new Date(),
   };
 
   const title = useInput("text");
@@ -52,7 +57,7 @@ const Notes = () => {
     e.preventDefault();
     const idOfNote = e.target.id;
     const response = filterNotes?.filter((note) => note.id == idOfNote);
-    if(response) {
+    if (response) {
       setNote(response[0]);
     }
   };
@@ -65,38 +70,52 @@ const Notes = () => {
   };
 
   const li = filterNotes?.map((note) => (
-    <li key={note.id} id={note.id} onClick={onClick}>{note.title}</li>
+    <li key={note.id} id={note.id} onClick={onClick} className="notes-list__item">
+        {note.title}
+    </li>
   ));
 
   return (
     <RouterPage>
       <Navbar />
-      <div className="container">
-        <ul>
-          {li.reverse()}
-        </ul>
-      </div>
-      <div className="container">
-        <h1>Create Note</h1>
-        <form onSubmit={onSubmit}>
-          <div className="form-group">
-            <label htmlFor="title">Title</label>
-            <input {...title} name="title" id="title" />
+      <main className="dashboard-layout">
+        <AsideNav id={id} page="notes" />
+        <div className="notes-list">
+          <div className="fluid-container">
+            <div>
+              <h1>Create Note</h1>
+              <form onSubmit={onSubmit}>
+                <div className="form-group">
+                  <label htmlFor="title">Title</label>
+                  <input {...title} name="title" id="title" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="description">Content</label>
+                  <input {...content} name="description" id="description" />
+                </div>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+
+            <NotesList>
+              {li.reverse()}
+            </NotesList>
           </div>
-          <div className="form-group">
-            <label htmlFor="description">Content</label>
-            <input {...content} name="description" id="description" />
+        </div>
+        <div className="section-container__wrapper">
+          <div className="fluid-container">
+            {note && (
+              <NotesEditor
+                note={note}
+                setNote={setNote}
+                update={updateNote}
+                deleteFuction={deleteNote}
+                key={`${note.id}-editor`}
+              />
+            )}
           </div>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-      <div className="container">
-        {
-          note && (
-            <NotesEditor note={note} setNote={setNote} update={updateNote} deleteFuction={deleteNote} key={`${note.id}-editor`}/>
-          )
-        }
-      </div>
+        </div>
+      </main>
     </RouterPage>
   );
 };
