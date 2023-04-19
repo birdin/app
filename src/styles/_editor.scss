@@ -6,7 +6,29 @@
   ol {
     padding: 0 1rem;
   }
+
+  code {
+    background-color: rgba(#616161, 0.1);
+    color: #616161;
+  }
+
+  pre {
+    background: #0D0D0D;
+    color: #FFF;
+    font-family: 'JetBrainsMono', monospace;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+
+    code {
+      color: inherit;
+      padding: 0;
+      background: none;
+      font-size: 0.8rem;
+    }
+  }
+
   outline: none;
+
 }
 
 .bubble-menu {
@@ -33,7 +55,6 @@
 
 .floating-menu {
   display: flex;
-  background-color: #0d0d0d10;
   padding: 0.2rem;
   border-radius: 0.5rem;
 
@@ -52,6 +73,12 @@
   }
 }
 
+.floating-menu {
+  background-color: #ffffff!important;
+  border: 1px solid #d6d6d6;
+  margin-left: 2rem;
+}
+
 .form-note__section {
   padding: 1rem 0;
 }
@@ -64,4 +91,12 @@
     font-size: 2.4rem;
     font-weight: 700;
   }
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #d6d6d6;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
 }

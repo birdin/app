@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
 import { FaTasks } from "react-icons/fa";
-import { GrNotes } from "react-icons/gr";
+import { SlNote } from "react-icons/sl";
 
 type AsideProps = {
   id: string | undefined;
@@ -22,7 +22,7 @@ const AsideNav = ({ id, page }: AsideProps) => {
     },
     notes: {
       name: "Notes",
-      icon: <GrNotes />,
+      icon: <SlNote />,
     },
   };
 

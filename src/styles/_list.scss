@@ -61,7 +61,7 @@
     cursor: pointer;
     color: #393939;
     &.active {
-        font-weight: 600;
+        font-weight: 500;
         background-color: #e9f0f1;
     }
     &:hover {
@@ -71,4 +71,16 @@
 
 .notes-list__item--h4 {
     padding-top: 0;
+}
+
+.notes-list__title-container, .notes-list__title-date {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.notes-list__title-date {
+    color: rgb(156, 156, 156);
+    font-size: 0.9em;
+    margin-top: 5px;
 }

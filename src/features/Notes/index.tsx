@@ -3,6 +3,9 @@ import { useDebounce } from "../../hooks/useDebounce";
 import { useInput } from "../../hooks/useInput";
 import Note from "./component/NoteEditor";
 
+import { FiTrash2 } from "react-icons/fi";
+
+
 type Props = {
   note: any;
   setNote: any;
@@ -43,11 +46,14 @@ const NotesEditor = ({ note, setNote, update, deleteFuction }: Props) => {
       <div className="title-group">
         <input {...title} />  
       </div>
-      <div>
-        <Note content={note.content} updateContent={setContentInput} />
-      </div>
       <div className="div">
-        <button onClick={onRemove}>Remove it</button>
+        <button onClick={onRemove} className="delete-note__button">
+          <FiTrash2 />
+          Delete note
+        </button>
+      </div>
+      <div>
+        <Note key={`${note?.id}-note`} content={note.content} updateContent={setContentInput} />
       </div>
     </div>
   );

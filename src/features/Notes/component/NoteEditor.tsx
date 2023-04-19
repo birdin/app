@@ -1,9 +1,11 @@
+import Placeholder from "@tiptap/extension-placeholder";
 import {
   BubbleMenu,
   EditorContent,
   FloatingMenu,
   useEditor,
 } from "@tiptap/react";
+
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect } from "react";
 
@@ -14,7 +16,12 @@ type Props = {
 
 export default ({ content, updateContent }: Props) => {
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [
+      StarterKit,
+      Placeholder.configure({
+        emptyEditorClass: "is-editor-empty",
+      }),
+    ],
     content: content,
   });
 
@@ -25,7 +32,6 @@ export default ({ content, updateContent }: Props) => {
   useEffect(() => {
     updateContent(editor?.getHTML());
   }, [editor?.getHTML()]);
-
 
   return (
     <>
@@ -52,6 +58,12 @@ export default ({ content, updateContent }: Props) => {
             className={editor.isActive("strike") ? "is-active" : ""}
           >
             Strike
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+            className={editor.isActive("codeBlock") ? "is-active" : ""}
+          >
+            Code block
           </button>
         </BubbleMenu>
       )}
@@ -87,6 +99,12 @@ export default ({ content, updateContent }: Props) => {
             className={editor.isActive("bulletList") ? "is-active" : ""}
           >
             Bullet List
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+            className={editor.isActive("codeBlock") ? "is-active" : ""}
+          >
+            Code block
           </button>
         </FloatingMenu>
       )}

@@ -70,3 +70,9 @@ h2 {
 .d-flex {
   display: flex;
 }
+
+.d-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

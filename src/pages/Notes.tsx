@@ -1,25 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useInput } from "../hooks/useInput";
+import { v4 as uuidv4 } from "uuid";
+
 import { Navbar } from "../components/Navbar";
 import { GlobalContext } from "../context/GlobalContext";
 import RouterPage from "../hoc/RouterPage";
 import { useParams } from "react-router-dom";
 import NotesEditor from "../features/Notes";
-import { v4 as uuidv4 } from "uuid";
 import { AsideNav } from "../components/Aside";
 import NotesList from "../features/Notes/component/NotesList";
-import { normalizeText } from "../utils/normalizeText";
+import NoteCard from "../features/Notes/component/NoteCard";
 
 const Notes = () => {
   const { notes, dispatchNotes } = useContext(GlobalContext);
 
   if (!notes) {
     return null;
-  }
 
+  }
   const { id } = useParams();
   const [note, setNote] = useState(
-    notes.filter((note) => note.project_id === id)[0]
+    notes.filter((note) => note.project_id === id).reverse()[0]
   );
   const [filterNotes, setFilterNotes] = useState(
     notes.filter((note) => note.project_id === id)
@@ -35,9 +35,6 @@ const Notes = () => {
   };
 
   const deleteNote = (newNote: any) => {
-    console.log("Deleting note");
-    const response = filterNotes?.filter((note) => note.id != newNote.id);
-    console.log(response);
     dispatchNotes({ type: "REMOVE_NOTE", payload: newNote.id });
   };
 
@@ -50,29 +47,33 @@ const Notes = () => {
     updateTime: new Date(),
   };
 
-  const title = useInput("text");
-  const content = useInput("text");
-
   const onClick = (e: any) => {
-    e.preventDefault();
-    const idOfNote = e.target.id;
+    if(!e) {
+      return null;
+    }
+    const idOfNote = e;
     const response = filterNotes?.filter((note) => note.id == idOfNote);
     if (response) {
       setNote(response[0]);
     }
   };
 
-  const onSubmit = (e: any) => {
-    e.preventDefault();
-    newNote.title = title.value;
-    newNote.content = content.value;
+  const onCreate = () => {
+    newNote.id = uuidv4();
+    newNote.title = "Untitled note";
+    newNote.content = "";
+    newNote.date = new Date();
     dispatchNotes({ type: "ADD_NOTE", payload: newNote });
   };
 
   const li = filterNotes?.map((item) => (
-    <li key={item.id} id={item.id} onClick={onClick} className={`notes-list__item ${item.id == note?.id ? 'active' : ''}`}>
-        {item.title}
-    </li>
+    <NoteCard 
+    key={item.id} id={item.id} 
+    onClick={() => onClick(item.id)} 
+    className={`notes-list__item ${item.id == note?.id ? 'active' : ''}`} 
+    title={item.title}
+    date={item?.date?.toString()}
+    />
   ));
 
   return (
@@ -82,24 +83,9 @@ const Notes = () => {
         <AsideNav id={id} page="notes" />
         <div className="notes-list">
           <div className="fluid-container">
-            <NotesList>
+            <NotesList onCreate={onCreate}>
               {li.reverse()}
             </NotesList>
-
-            <div>
-              <h1>Create Note</h1>
-              <form onSubmit={onSubmit}>
-                <div className="form-group">
-                  <label htmlFor="title">Title</label>
-                  <input {...title} name="title" id="title" />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="description">Content</label>
-                  <input {...content} name="description" id="description" />
-                </div>
-                <button type="submit">Submit</button>
-              </form>
-            </div>
 
           </div>
         </div>

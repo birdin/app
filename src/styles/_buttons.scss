@@ -1,68 +1,85 @@
 button {
-    background-color: transparent;
-    cursor: pointer;
-    user-select: none;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
 }
 
 .task-add__btn {
-    width: 100%;
-    padding: 10px 5px;
-    border: none;
-    font-size: 14px;t
-    &:hover {
-        background-color: #ffffff;
-    }
+  width: 100%;
+  padding: 10px 5px;
+  border: none;
+  font-size: 14px;
+  t &:hover {
+    background-color: #ffffff;
+  }
 }
 
 .settings-btn {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    &:hover {
-        background-color: #ffffff;
-    }
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  &:hover {
+    background-color: #ffffff;
+  }
 }
 
 .btn-form {
-    padding: 5px 10px;
-    background-color: var(--btn-color-primary);
-    cursor: pointer;
-    color: #2c2c2c;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+  padding: 5px 10px;
+  background-color: var(--btn-color-primary);
+  cursor: pointer;
+  color: #2c2c2c;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.form-btn--secondary, .form-btn--primary {
-    padding: 5px 2rem;
-    font-weight: 500;
+.form-btn--secondary,
+.form-btn--primary {
+  padding: 5px 2rem;
+  font-weight: 500;
 }
 
 .form-btn--primary {
-    background-color:  var(--btn-color-secondary);
-    color: white;
-    svg {
-        margin-left: -0.5rem;
-    }
+  background-color: var(--btn-color-secondary);
+  color: white;
+  svg {
+    margin-left: -0.5rem;
+  }
 }
 
 .member-icon {
-    color: orange;
+  color: orange;
 }
 
 .add-button {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 18px;
-    background-color: #4b974b;
-    color: white;
-    font-size: 0.9em;
-    text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 18px;
+  background-color: #4b974b;
+  color: white;
+  font-size: 0.9em;
+  text-decoration: none;
 
-    &::before {
-        content: "+";
-        margin-right: 0.5rem;
-    }
+  &::before {
+    content: "+";
+    margin-right: 0.5rem;
+  }
+}
+
+.create-note__button {
+  padding: 6px 1.3rem;
+  border-radius: 15px;
+  border: 1px solid grey;
+  color: #313131;
+}
+
+.delete-note__button {
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #4e4e4e;
 }
