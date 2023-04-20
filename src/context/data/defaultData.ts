@@ -104,13 +104,14 @@ export const initialState = {
     name: "Carlos",
     email: "",
     avatar: "https://i.pravatar.cc/150?img=1",
-    projects: [
+    project:
       {
         id: 1,
         name: "La Forma",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.",
         status: "active",
+        label: "Laf",
         type: "public",
         img: "https://assets.codigohabil.com/img/laforma.png",
         deadline: "10/12/2023",
@@ -127,7 +128,6 @@ export const initialState = {
         ],
         tasks: [],
       },
-    ],
   },
 };
 

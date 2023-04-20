@@ -125,6 +125,8 @@ export const GlobalProvider = (props: any) => {
 
   const [projectData, setProjectData] = useState(initProjectData);
 
+  const [generalInfo, setGeneralInfo] = useState(initialState)
+
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(data));
     const aux = { ...projectData, [data.projectID]: data };
@@ -147,6 +149,19 @@ export const GlobalProvider = (props: any) => {
 
   useEffect(() => {
     setDataTaks(projectId);
+    const selectProject = projects.find((el: any) => el.id == projectId);
+    const aux = {...generalInfo}  
+    aux.user.project.name = ""
+    if(selectProject){
+      console.log("Check",selectProject.name)
+      aux.user.project.name = selectProject.name
+      aux.user.project.description = selectProject.description
+      aux.user.project.label = selectProject.label
+      aux.user.project.img = ''
+      //aux.user.project.name = selectProject.name
+    }
+    setGeneralInfo(aux)
+
   }, [projectId]);
 
   const onOpen = (props: boolean) => {
@@ -242,7 +257,7 @@ export const GlobalProvider = (props: any) => {
   return (
     <GlobalContext.Provider
       value={{
-        state: initialState,
+        state: generalInfo,
         modal: modal,
         addData: addTask,
         data: data,

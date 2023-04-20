@@ -1,16 +1,24 @@
 import { useContext } from "react";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { GlobalContext } from "../../context/GlobalContext";
+import { ProjectPlaceholder } from "../Placeholder";
 const ProjectHeader = () => {
   const { state } = useContext(GlobalContext);
-  const project = state.user.projects[0];
+  const project = state.user.project;
 
   return (
     <div className="wide-container">
       <div className="header-container">
-        <picture className="project-logo">
-          <img src={project.img} alt="Project logo" />
-        </picture>
+        {
+          project.img ? (
+            <picture className="project-logo">
+              <img src={project.img} alt="Project logo" />
+            </picture> )
+            : (
+              <ProjectPlaceholder className="wide-avatar" />
+            )
+        }
+
         <h2 className="project-header__title">{project.name}</h2>
       </div>
       <div className="header-statusbar">

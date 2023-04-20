@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { IoIosArrowForward } from "react-icons/io"
 import { BsArchive } from "react-icons/bs"
+import { ProjectPlaceholder } from "../Placeholder"
 
 
 type Props = {
@@ -14,9 +15,7 @@ const ProjectItem = ({name, label, id}: Props) => {
     <div className="list-item project-list">
         <Link to={`/project/${id}`}>
             <div>
-                <div className="project-placeholder__avatar">
-                    <BsArchive />
-                </div>
+                <ProjectPlaceholder />
             </div>
             <div className="project-list__container">
                 <h3>{name}</h3>
