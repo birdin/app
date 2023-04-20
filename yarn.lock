@@ -493,6 +493,13 @@
   "resolved" "https://registry.npmjs.org/@tiptap/extension-italic/-/extension-italic-2.0.3.tgz"
   "version" "2.0.3"
 
+"@tiptap/extension-link@^2.0.3":
+  "integrity" "sha512-H72tXQ5rkVCkAhFaf08fbEU7EBUCK0uocsqOF+4th9sOlrhfgyJtc8Jv5EXPDpxNgG5jixSqWBo0zKXQm9s9eg=="
+  "resolved" "https://registry.npmjs.org/@tiptap/extension-link/-/extension-link-2.0.3.tgz"
+  "version" "2.0.3"
+  dependencies:
+    "linkifyjs" "^4.1.0"
+
 "@tiptap/extension-list-item@^2.0.3":
   "integrity" "sha512-p7cUsk0LpM1PfdAuFE8wYBNJ3gvA0UhNGR08Lo++rt9UaCeFLSN1SXRxg97c0oa5+Ski7SrCjIJ5Ynhz0viTjQ=="
   "resolved" "https://registry.npmjs.org/@tiptap/extension-list-item/-/extension-list-item-2.0.3.tgz"
@@ -516,6 +523,16 @@
 "@tiptap/extension-strike@^2.0.3":
   "integrity" "sha512-RO4/EYe2iPD6ifDHORT8fF6O9tfdtnzxLGwZIKZXnEgtweH+MgoqevEzXYdS+54Wraq4TUQGNcsYhe49pv7Rlw=="
   "resolved" "https://registry.npmjs.org/@tiptap/extension-strike/-/extension-strike-2.0.3.tgz"
+  "version" "2.0.3"
+
+"@tiptap/extension-task-item@^2.0.3":
+  "integrity" "sha512-13u1Q769WiSNcjFieYAMuJyWXNaY9yOdw6WFg9tQg4EZ5h6+2DaxB0qmu6I3pH+wwSn2UkCkXIirAo/k7wnzbw=="
+  "resolved" "https://registry.npmjs.org/@tiptap/extension-task-item/-/extension-task-item-2.0.3.tgz"
+  "version" "2.0.3"
+
+"@tiptap/extension-task-list@^2.0.3":
+  "integrity" "sha512-NdW0RtMF2L96qy+j946mTB5Av6Qn5L3vGVWFmJA6/JPXr9Uj/grItCmqUQKHfPBSFow7UqBY82ODblP+GQFgew=="
+  "resolved" "https://registry.npmjs.org/@tiptap/extension-task-list/-/extension-task-list-2.0.3.tgz"
   "version" "2.0.3"
 
 "@tiptap/extension-text-style@^2.0.0", "@tiptap/extension-text-style@^2.0.2":
@@ -1838,6 +1855,11 @@
   "version" "4.0.1"
   dependencies:
     "uc.micro" "^1.0.1"
+
+"linkifyjs@^4.1.0":
+  "integrity" "sha512-zFN/CTVmbcVef+WaDXT63dNzzkfRBKT1j464NJQkV7iSgJU0sLBus9W0HBwnXK13/hf168pbrx/V/bjEHOXNHA=="
+  "resolved" "https://registry.npmjs.org/linkifyjs/-/linkifyjs-4.1.1.tgz"
+  "version" "4.1.1"
 
 "local-pkg@^0.4.2":
   "integrity" "sha512-SFppqq5p42fe2qcZQqqEOiVRXl+WCP1MdT6k7BDEW1j++sp5fIY+/fdRQitvKgB5BrBcmrs5m/L0v2FrU5MY1g=="

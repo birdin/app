@@ -26,6 +26,18 @@
       font-size: 0.8rem;
     }
   }
+  img {
+    height: auto;
+    max-width: 100%;
+
+    &.ProseMirror-selectednode {
+      outline: 3px solid #68cef8;
+    }
+  }
+
+  a {
+    cursor: pointer;
+  }
 
   outline: none;
 
@@ -81,6 +93,10 @@
 
 .form-note__section {
   padding: 1rem 0;
+  max-width: 800px;
+  @media (min-width: 768px) {
+    padding: 1rem 2rem;
+  }
 }
 
 .title-group {
@@ -99,4 +115,27 @@
   float: left;
   height: 0;
   pointer-events: none;
+}
+
+ul[data-type="taskList"] {
+  list-style: none;
+  padding: 0;
+
+  p {
+    margin: 0;
+  }
+
+  li {
+    display: flex;
+
+    > label {
+      flex: 0 0 auto;
+      margin-right: 0.5rem;
+      user-select: none;
+    }
+
+    > div {
+      flex: 1 1 auto;
+    }
+  }
 }

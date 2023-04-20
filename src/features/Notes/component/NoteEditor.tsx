@@ -7,6 +7,12 @@ import {
 } from "@tiptap/react";
 
 import StarterKit from "@tiptap/starter-kit";
+import TaskItem from "@tiptap/extension-task-item";
+import TaskList from "@tiptap/extension-task-list";
+import Dropcursor from "@tiptap/extension-dropcursor";
+import Link from '@tiptap/extension-link'
+import Image from "@tiptap/extension-image";
+
 import { useEffect } from "react";
 
 type Props = {
@@ -21,6 +27,15 @@ export default ({ content, updateContent }: Props) => {
       Placeholder.configure({
         emptyEditorClass: "is-editor-empty",
       }),
+      TaskList,
+      Image,
+      Dropcursor,
+      TaskItem.configure({
+        nested: true,
+      }),
+      Link.configure({
+        validate: href => /^https?:\/\//.test(href),
+      })
     ],
     content: content,
   });

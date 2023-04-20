@@ -26,14 +26,17 @@ const ProjectHeader = () => {
           <span className="header-statusbar__tag">Project status</span>
           <span className="header-statusbar__info">
             <span className="statusbar__indicator statusbar__indicator--active"></span>
-            Active
+            {project.status}
           </span>
         </div>
         <div className="header-statusbar__item">
           <span className="header-statusbar__tag">Project type</span>
           <span className="statusbar-category__container">
-            <span className="statusbar-category__item">Architecture</span>
-            <span className="statusbar-category__item">Web</span>
+            {
+              project.categories.map((item, index) => (
+                <span key={index + "cat-item"} className="statusbar-category__item">{item.name}</span>
+              ))
+            }
           </span>
         </div>
         <div className="header-statusbar__item">
@@ -43,7 +46,8 @@ const ProjectHeader = () => {
         <div className="header-statusbar__item">
           <span className="header-statusbar__tag">Deadline</span>
           <span className="header-statusbar__info">
-            <AiOutlineCalendar /> 10/12/2023
+            <AiOutlineCalendar /> 
+            {project.deadline}
           </span>
         </div>
       </div>
