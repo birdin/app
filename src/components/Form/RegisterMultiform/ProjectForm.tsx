@@ -4,8 +4,11 @@ import { v4 as uuidv4 } from "uuid";
 import { GlobalContext } from "../../../context/GlobalContext";
 import { useInput } from "../../../hooks/useInput";
 import { useMultiform } from "../../../hooks/useMultiform";
+
 import ProjectBasicInfo from "./ProjectBasicInfo";
 import ProjectMoreInfo from "./ProjectMoreInfo";
+import { useNavigate } from "react-router-dom";
+
 
 
 type FormProject = {
@@ -34,6 +37,8 @@ const ProjectForm = () => {
   const { dispatchProjects, createProjectData } = useContext(GlobalContext);
   const [newProject, setNewProject] = useState(newProjectInit); 
 
+  const navigate = useNavigate();
+
   const name = useInput("text");
   const description = useInput("text");
   const dueDate = useInput("date");
@@ -61,12 +66,15 @@ const ProjectForm = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(newProject);
     if(isLastStep) {
+      console.log(newProject);
       dispatchProjects({ type: "ADD_PROJECT", payload: newProject });
       createProjectData(newProject.id);
+      navigate("/project/" + newProject.id);
+
+    } else {
+      next();
     }
-    next();
   };
 
   return (
@@ -74,7 +82,7 @@ const ProjectForm = () => {
       <form onSubmit={onSubmit}>
         {step}
         {!isFirstStep && <div onClick={prev}>Before</div>}
-          {!isLastStep && <input type="submit" value="Next"/>}
+        {!isLastStep ? <input type="submit" value="Next"/> : <input type="submit" value="finish"/>}
       </form>
       <div className="check">{stepCount + 1}</div>
 

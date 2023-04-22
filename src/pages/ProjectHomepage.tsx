@@ -7,13 +7,20 @@ import { GlobalContext } from "../context/GlobalContext";
 import RouterPage from "../hoc/RouterPage";
 import { AsideNav } from "../components/Aside";
 
+type Note = {
+  id: string;
+  project_id: string;
+  title: string;
+  content: string;
+};
+
 const ProjectHomepage = () => {
   const { data, notes } = useContext(GlobalContext);
   const { id } = useParams();
 
   const keys = data.tasks !== undefined ? Object.keys(data.tasks) : [""];
   const li = [];
-  let note = {};
+  let note: Partial<Note> = {}
   for (let i = 0; i < notes.length; i++) {
     if (notes[i].project_id === id) {
       note = notes[i];
