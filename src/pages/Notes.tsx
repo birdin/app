@@ -15,12 +15,14 @@ const Notes = () => {
 
   if (!notes) {
     return null;
-
   }
+
   const { id } = useParams();
+  
   const [note, setNote] = useState(
     notes.filter((note) => note.project_id === id).reverse()[0]
   );
+
   const [filterNotes, setFilterNotes] = useState(
     notes.filter((note) => note.project_id === id)
   );

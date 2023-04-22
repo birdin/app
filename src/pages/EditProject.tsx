@@ -5,18 +5,19 @@ import { Navbar } from "../components/Navbar";
 import { GlobalContext } from "../context/GlobalContext";
 
 const EditProject = () => {
-  const { projects, dispatchProjects,  } = useContext(GlobalContext);
+  const { projects, dispatchProjects } = useContext(GlobalContext);
   const { id } = useParams();
+
   const project = projects.find((project) => project.id === id);
 
-    const onEdit = (project: any) => {
-        dispatchProjects({type: "UPDATE_PROJECT", payload: project});
-    }
+  const onEdit = (project: any) => {
+    dispatchProjects({ type: "UPDATE_PROJECT", payload: project });
+  };
 
   return (
     <>
       <Navbar />
-      <ProjectEditForm project={project} editProject={onEdit}/>
+      <ProjectEditForm project={project} editProject={onEdit} />
     </>
   );
 };
