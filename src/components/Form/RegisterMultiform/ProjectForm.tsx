@@ -1,21 +1,21 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 
 import { GlobalContext } from "../../../context/GlobalContext";
-import { useInput } from "../../../hooks/useInput";
 import { useMultiform } from "../../../hooks/useMultiform";
 
 import ProjectBasicInfo from "./ProjectBasicInfo";
 import ProjectMoreInfo from "./ProjectMoreInfo";
-import { useNavigate } from "react-router-dom";
-
-
+import FormProjectHeader from "../../Header/FormProjectHeader";
+import { AiFillCheckCircle } from "react-icons/ai";
 
 type FormProject = {
   name: string;
   description: string;
   organization: string;
-  status:  string;
+  status: string;
   img: string;
   dueDate: string;
   label: string;
@@ -28,50 +28,38 @@ const newProjectInit: FormProject = {
   dueDate: "",
   label: "",
   status: "active",
-  img:"",
+  img: "",
   organization: "",
   id: uuidv4(),
 };
 
 const ProjectForm = () => {
   const { dispatchProjects, createProjectData } = useContext(GlobalContext);
-  const [newProject, setNewProject] = useState(newProjectInit); 
+  const [newProject, setNewProject] = useState(newProjectInit);
 
   const navigate = useNavigate();
-
-  const name = useInput("text");
-  const description = useInput("text");
-  const dueDate = useInput("date");
 
   const updateForm = (fields: Partial<FormProject>) => {
     setNewProject((prev) => ({ ...prev, ...fields }));
   };
 
-  /*
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    const project = {
-      name: name.value,
-      description: description.value,
-      dueDate: dueDate.value,
-      label: name.value.slice(0, 2),
-      id: uuidv4(),
-    };
-    dispatchProjects({ type: "ADD_PROJECT", payload: project });
-    createProjectData(project.id);
-  };
-  */
   const { step, next, prev, isFirstStep, isLastStep, stepCount } = useMultiform(
-    [<ProjectBasicInfo {...newProject} updateForm={updateForm} />, <ProjectMoreInfo {...newProject} updateForm={updateForm} />, <h1>!</h1>]
+    [
+      <ProjectBasicInfo {...newProject} updateForm={updateForm} />,
+      <ProjectMoreInfo {...newProject} updateForm={updateForm} />,
+      <>
+        <h1><AiFillCheckCircle/> Almost done!</h1><p>The project has been set up</p>
+      </>,
+    ]
   );
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if(isLastStep) {
+    if (isLastStep) {
       console.log(newProject);
       dispatchProjects({ type: "ADD_PROJECT", payload: newProject });
       createProjectData(newProject.id);
       navigate("/project/" + newProject.id);
-
     } else {
       next();
     }
@@ -79,39 +67,27 @@ const ProjectForm = () => {
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="sm-form m-t-2" autoComplete="off">
+        <FormProjectHeader />
         {step}
-        {!isFirstStep && <div onClick={prev}>Before</div>}
-        {!isLastStep ? <input type="submit" value="Next"/> : <input type="submit" value="finish"/>}
+        <div className="button-section">
+          {!isFirstStep && (
+            <div className="circle-btn before-btn" onClick={prev}>
+              <MdArrowBackIosNew />
+            </div>
+          )}
+          {!isLastStep ? (
+            <button type="submit" className="circle-btn next-btn" value="">
+              <MdArrowForwardIos />
+            </button>
+          ) : (
+            <button type="submit" className="finish-btn" value="">
+              + Create project
+            </button>
+          )}
+        </div>
       </form>
       <div className="check">{stepCount + 1}</div>
-
-    </div>
-  );
-
-  return (
-    <div>
-      <h1>Updated</h1>
-      <form onSubmit={onSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input {...name} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <input {...description} name="description" id="description" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="dueDate">Due Date</label>
-          <input {...dueDate} />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-      {step}
-      <div className="check">{stepCount}</div>
-
-      {!isFirstStep && <div onClick={prev}>Before</div>}
-      {!isLastStep && <div onClick={next}>Next</div>}
     </div>
   );
 };

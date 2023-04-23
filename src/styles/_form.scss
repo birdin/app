@@ -73,3 +73,56 @@
         }
     }
 }
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+
+.sm-form {
+    max-width: 400px;
+    margin: 0 auto;
+    * {
+        box-sizing: border-box;
+      }
+}
+
+.form-control {
+    box-sizing: border-box;
+    display: block;
+    padding: 0.475rem 0.75rem;
+    width: 100%;
+    font-size: 0.95em;
+    background-color: #F2F2F2;
+    border: 1px solid var(--border-color);
+}
+
+textarea.form-control {
+    height: 100px;
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-floating {
+    position: relative;
+}
+
+.form-floating > .form-control {
+    padding: 1rem 0.75rem;
+}
+
+.form-floating > .form-control, .form-floating > .form-select {
+    line-height: 1.25;
+    height: calc(3.5rem + 2px);
+}
+
+.button-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
