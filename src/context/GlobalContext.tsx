@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState, useReducer } from "react";
+
 import { initialState } from "./data/defaultData";
+import { isValidURL } from "../utils/validateURL";
 
 export const GlobalContext = createContext({
   state: initialState,
@@ -157,7 +159,7 @@ export const GlobalProvider = (props: any) => {
       aux.user.project.name = selectProject.name
       aux.user.project.description = selectProject.description
       aux.user.project.label = selectProject.label
-      aux.user.project.img = ''
+      aux.user.project.img = isValidURL(selectProject.img) ? selectProject.img : ""
       //aux.user.project.name = selectProject.name
     }
     setGeneralInfo(aux)

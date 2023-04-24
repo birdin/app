@@ -6,6 +6,9 @@ const ProjectHeader = () => {
   const { state } = useContext(GlobalContext);
   const project = state.user.project;
 
+  console.log("Project header", project);
+
+
   return (
     <div className="wide-container">
       <div className="header-container">

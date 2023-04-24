@@ -31,7 +31,7 @@ const newProjectInit: FormProject = {
   status: "active",
   img: "",
   organization: "",
-  id: uuidv4(),
+  id: ""
 };
 
 const ProjectForm = () => {
@@ -62,7 +62,7 @@ const ProjectForm = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isLastStep) {
-      console.log(newProject);
+      newProject.id = uuidv4();      
       dispatchProjects({ type: "ADD_PROJECT", payload: newProject });
       createProjectData(newProject.id);
       navigate("/project/" + newProject.id);
