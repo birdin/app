@@ -1,0 +1,46 @@
+.step-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    &::before {
+        width: 98%;
+        height: 7px;
+        background-color: var(--color-gray);
+        position: absolute;
+        content: "";
+        top: 20px;
+        z-index: -1;
+    }
+}
+
+.step-indicator__circle {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: var(--color-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8em;
+    transition: all 0.3s ease-in-out;
+    &.active {
+        background-color: var(--color-orange);
+        &::after {
+            content: "";
+            width: 50%;
+            height: 8px;
+            background-color: var(--color-orange);
+            position: absolute;
+            z-index: -1;
+            top: 19px;
+            margin-right: 50%;
+        }
+        
+    }
+}

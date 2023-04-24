@@ -10,6 +10,7 @@ import ProjectBasicInfo from "./ProjectBasicInfo";
 import ProjectMoreInfo from "./ProjectMoreInfo";
 import FormProjectHeader from "../../Header/FormProjectHeader";
 import { AiFillCheckCircle } from "react-icons/ai";
+import { StepIndicator } from "../../StepIndicator";
 
 type FormProject = {
   name: string;
@@ -48,10 +49,15 @@ const ProjectForm = () => {
       <ProjectBasicInfo {...newProject} updateForm={updateForm} />,
       <ProjectMoreInfo {...newProject} updateForm={updateForm} />,
       <>
-        <h1><AiFillCheckCircle/> Almost done!</h1><p>The project has been set up</p>
+        <h1>
+          <AiFillCheckCircle /> Almost done!
+        </h1>
+        <p>The project has been set up</p>
       </>,
     ]
   );
+
+  const NUMBER_OF_STEPS = 3;
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -69,6 +75,7 @@ const ProjectForm = () => {
     <div>
       <form onSubmit={onSubmit} className="sm-form m-t-2" autoComplete="off">
         <FormProjectHeader />
+        <StepIndicator length={NUMBER_OF_STEPS} currentStep={stepCount} />
         {step}
         <div className="button-section">
           {!isFirstStep && (

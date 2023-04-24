@@ -1,17 +1,19 @@
 @import "normalize";
 @import "variables";
 @import "layout";
-@import "buttons";
-@import "navbar";
-@import "header";
+
 @import "avatar";
 @import "board";
-@import "modal";
+@import "buttons";
 @import "dropdown";
-@import "form";
-@import "list";
 @import "editor";
+@import "form";
+@import "header";
+@import "navbar";
+@import "modal";
+@import "list";
 @import "section";
+@import "stepIndicator";
 
 * {
   font-size: 14px;
