@@ -6,6 +6,7 @@ import { Navbar } from "../components/Navbar";
 import { GlobalContext } from "../context/GlobalContext";
 import RouterPage from "../hoc/RouterPage";
 import { AsideNav } from "../components/Aside";
+import { QuickstartSection } from "../components/Section";
 
 type Note = {
   id: string;
@@ -20,7 +21,7 @@ const ProjectHomepage = () => {
 
   const keys = data.tasks !== undefined ? Object.keys(data.tasks) : [""];
   const li = [];
-  let note: Partial<Note> = {}
+  let note: Partial<Note> = {};
   for (let i = 0; i < notes.length; i++) {
     if (notes[i].project_id === id) {
       note = notes[i];
@@ -43,11 +44,16 @@ const ProjectHomepage = () => {
     <RouterPage>
       <Navbar />
       <main className="dashboard-layout">
-        <AsideNav id={id} page="home"/>        
+        <AsideNav id={id} page="home" />
         <div className="section-container__wrapper">
           <ProjectHeader />
           <div className="fluid-container">
-            <div className="grid-2-columns">
+            <div className="grid-homepage">
+              <div className="section-wrapper">
+                <h2 className="section-header-title">Quick panel</h2>
+                <p className="section-header-subtitle">Most common features</p>
+                {<QuickstartSection />}
+              </div>
               <div className="section-wrapper">
                 <h2 className="section-header-title">
                   <div className="status-indicator status-indicator--in-progress"></div>
@@ -73,7 +79,10 @@ const ProjectHomepage = () => {
                 <div className="section-container">
                   {note ? (
                     <div className="section--notes-container">
-                      {note?.content}
+                      <h3>{note.title}</h3>
+                      <div
+                        dangerouslySetInnerHTML={{ __html: note?.content ? note?.content : '' }}
+                      ></div>
                     </div>
                   ) : (
                     <p>No notes</p>

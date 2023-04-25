@@ -62,6 +62,20 @@
   }
 }
 
+.grid-homepage {
+  display: grid;
+  grid-template-columns: 1fr;
+  @media (min-width: $md) {
+    grid-gap: 2;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: $lg) {
+    grid-gap: 3;
+    grid-template-columns: 1fr 2fr 2fr;
+  }
+
+}
+
 .dashboard-layout {
   display: flex;
   height: calc(100vh - 45px);

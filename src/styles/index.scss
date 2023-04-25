@@ -20,6 +20,11 @@
   font-family: "Inter", sans-serif;
 }
 
+h1, h2, h3 {
+  color: #434343;
+}
+
+
 h2 {
   font-size: 1.6rem;
   @media (min-width: $sm) {

@@ -36,6 +36,7 @@
   flex-wrap: wrap;
   gap: 5px;
   text-transform: capitalize;
+  margin-bottom: 0.4rem;
 }
 
 .header-statusbar__item {
@@ -47,6 +48,8 @@
 .header-statusbar__tag {
   font-weight: 500;
   padding-right: 10px;
+  letter-spacing: 0.5px;
+
 }
 
 .header-statusbar__info {
