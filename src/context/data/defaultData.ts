@@ -79,6 +79,7 @@ export const ProjectList = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.",
     status: "active",
+    organization:"",
     type: "public",
     img: "https://assets.codigohabil.com/img/laforma.png",
     members: [
@@ -103,7 +104,7 @@ export const initialState = {
     id: 1,
     name: "Carlos",
     email: "",
-    avatar: "https://i.pravatar.cc/150?img=1",
+    avatar: "https://i.pravatar.cc/150?img=2",
     project:
       {
         id: 1,

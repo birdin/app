@@ -1,17 +1,32 @@
+import { useContext } from "react";
 import { GrNotification } from "react-icons/gr";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
+import { Link, useNavigate, useParams } from "react-router-dom";
+
 import Logo from "../../assets/logo.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { GlobalContext } from "../../context/GlobalContext";
+import { BiGridVertical } from "react-icons/bi";
+
+import { isValidURL } from "../../utils/validateURL";
+import AvatarUserPlaceholder from "../Placeholder/AvatarUserPlaceholder";
+import { normalizeText } from "../../utils/normalizeText";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { state } = useContext(GlobalContext);
+  const { id } = useParams();
 
   return (
     <nav className="nav-dashboard fluid-container">
       <div className="nav-logo">
         <Link to="/">
+          <div className="menu-icon__container">
+            <BiGridVertical />
+          </div>
+        </Link>
+        <Link to={id ? `/project/${id}` : ""}>
           <img src={Logo} alt="Logo" />
         </Link>
       </div>
@@ -34,14 +49,15 @@ const Navbar = () => {
             <GrNotification />
           </div>
           <div className="profile-username">
-            <span>Username</span>
+            <span>{normalizeText(state.user.name, 10)}</span>
           </div>
           <div className="profile-avatar">
             <div className="profile-avatar__container">
-              <img
-                src="https://avatars.githubusercontent.com/u/4257305?v=4"
-                alt="Avatar"
-              />
+              {isValidURL(state.user.avatar) ? (
+                <img src={state.user.avatar} alt="Avatar" />
+              ) : (
+                <AvatarUserPlaceholder />
+              )}
             </div>
           </div>
           <button className="profile-settings">
