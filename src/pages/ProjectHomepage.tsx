@@ -28,8 +28,6 @@ const ProjectHomepage = () => {
     }
   }
 
-  console.log(note, notes);
-
   for (let i = keys.length - 1; i > keys.length - 6 && i > 0; --i) {
     const key = keys[i];
     const task = data.tasks[key];

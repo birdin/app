@@ -26,7 +26,7 @@ const Navbar = () => {
             <BiGridVertical />
           </div>
         </Link>
-        <Link to={id ? `/project/${id}` : ""}>
+        <Link to={id ? `/project/${id}` : "/"}>
           <img src={Logo} alt="Logo" />
         </Link>
       </div>
