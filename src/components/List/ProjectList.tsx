@@ -10,7 +10,7 @@ import { AddButton } from "../Button";
 const ProjectList = () => {
   const {value, onChange, type} = useInput("text");
   const { projects } = useContext(GlobalContext);
-  console.log(projects);
+
   return (
     <div className="fluid-container narrow-padding">
       <ProjectPageHeader>
@@ -28,7 +28,7 @@ const ProjectList = () => {
         </>
       </ProjectPageHeader>
 
-      <div>
+      <div className="list-projects__container">
         {projects
           .filter((project) => {
             return (
