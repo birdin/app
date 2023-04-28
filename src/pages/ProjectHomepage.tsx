@@ -29,8 +29,13 @@ const ProjectHomepage = () => {
     }
   }
 
-  for (let i = keys.length - 1; i > keys.length - 6 && i > 0; --i) {
+  for(let i = keys.length - 1; i>= (keys.length - 5) && i >= 0; --i) {
     const key = keys[i];
+
+    if(!key) {
+      continue;
+    }
+
     const task = data.tasks[key];
     li.push(
       <li key={i} className="section-tasls-list__item">

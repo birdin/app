@@ -155,7 +155,6 @@ export const GlobalProvider = (props: any) => {
     const aux = {...generalInfo}  
     aux.user.project.name = ""
     if(selectProject){
-      console.log("Check",selectProject.name)
       aux.user.project.name = selectProject.name
       aux.user.project.description = selectProject.description
       aux.user.project.label = selectProject.label

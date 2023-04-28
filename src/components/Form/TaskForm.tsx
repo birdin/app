@@ -3,15 +3,17 @@ import { AiOutlineArrowUp, AiOutlineClose } from "react-icons/ai";
 import ReactQuill from "react-quill";
 import { RiAddFill } from "react-icons/ri";
 import { BsCalendarX } from "react-icons/bs";
-import "react-quill/dist/quill.bubble.css";
 import { FaUserCircle } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
+
 import { GlobalContext } from "../../context/GlobalContext";
 import { useInput } from "../../hooks/useInput";
-import { toast } from "react-toastify";
-import 'react-day-picker/dist/style.css';
 
 import { DropdownCalendar, DropdownAssignUser, DropdownPriority } from "../Dropdown";
-import { useParams } from "react-router-dom";
+
+import "react-quill/dist/quill.bubble.css";
+import 'react-day-picker/dist/style.css';
 
 const TaskForm = () => {
   const { modal, addData } = useContext(GlobalContext);
@@ -30,6 +32,7 @@ const TaskForm = () => {
     const task = {
       id: "task-" + Date.now(),
       name: name.value,
+      label: '',
       content: value,
       priority: priority,
       dueDate: (selected?.getMonth() ? selected?.getMonth() + 1 : '') + "-" +  selected?.getDate() + "-" + selected?.getFullYear(),

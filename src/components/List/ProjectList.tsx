@@ -39,7 +39,7 @@ const ProjectList = () => {
                 .toLowerCase()
                 .includes(value.toLowerCase())
             );
-          })
+          }).reverse()
           .map((project) => {
             return (
               <ProjectItem
