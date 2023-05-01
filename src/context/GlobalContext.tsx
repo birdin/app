@@ -153,7 +153,9 @@ export const GlobalProvider = (props: any) => {
     setDataTaks(projectId);
     const selectProject = projects.find((el: any) => el.id == projectId);
     const aux = {...generalInfo}  
+
     aux.user.project.name = ""
+
     if(selectProject){
       aux.user.project.name = selectProject.name
       aux.user.project.description = selectProject.description
@@ -161,6 +163,7 @@ export const GlobalProvider = (props: any) => {
       aux.user.project.img = isValidURL(selectProject.img) ? selectProject.img : ""
       //aux.user.project.name = selectProject.name
     }
+    
     setGeneralInfo(aux)
 
   }, [projectId]);

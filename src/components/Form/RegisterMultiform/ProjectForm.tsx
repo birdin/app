@@ -6,10 +6,9 @@ import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { GlobalContext } from "../../../context/GlobalContext";
 import { useMultiform } from "../../../hooks/useMultiform";
 
-import ProjectBasicInfo from "./ProjectBasicInfo";
-import ProjectMoreInfo from "./ProjectMoreInfo";
+import { ProjectBasicInfo, ProjectMoreInfo, FinishComponent } from "./index";
+
 import FormProjectHeader from "../../Header/FormProjectHeader";
-import { AiFillCheckCircle } from "react-icons/ai";
 import { StepIndicator } from "../../StepIndicator";
 
 type FormProject = {
@@ -48,12 +47,7 @@ const ProjectForm = () => {
     [
       <ProjectBasicInfo {...newProject} updateForm={updateForm} />,
       <ProjectMoreInfo {...newProject} updateForm={updateForm} />,
-      <>
-        <h1>
-          <AiFillCheckCircle /> Almost done!
-        </h1>
-        <p>The project has been set up</p>
-      </>,
+      <FinishComponent />,
     ]
   );
 

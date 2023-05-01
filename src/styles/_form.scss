@@ -93,8 +93,12 @@
     padding: 0.475rem 0.75rem;
     width: 100%;
     font-size: 0.95em;
-    background-color: #F2F2F2;
+    //background-color: #F2F2F2;
     border: 1px solid var(--border-color);
+    outline: none;
+    &:focus {
+        box-shadow: 0px 0px 5px #c7c7c7;
+    }
 }
 
 textarea.form-control {
