@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Routes, Route, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { GlobalContext } from "../context/GlobalContext";
 import ModalViewTask from "../components/Modal/ModalViewTask";
