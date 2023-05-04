@@ -130,8 +130,16 @@ button {
 .read-more-btn {
   text-decoration: none;
   font-weight: 500;
-  padding: 4px 11px;
-  border: 1px solid black;
-  color: #333333;
-  border-radius: 4px;
+  padding: 4px 22px;
+  border: 1px solid #c3c3c3;
+  color: #606060;
+  border-radius: 23px;
+  font-size: 0.95em;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  width: fit-content;
+  &:hover {
+    background-color: #ffffff;
+  }
 }

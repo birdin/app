@@ -157,6 +157,7 @@ export const GlobalProvider = (props: any) => {
     aux.user.project.name = ""
 
     if(selectProject){
+      aux.user.project.id = selectProject.id
       aux.user.project.name = selectProject.name
       aux.user.project.description = selectProject.description
       aux.user.project.label = selectProject.label
@@ -166,7 +167,7 @@ export const GlobalProvider = (props: any) => {
     
     setGeneralInfo(aux)
 
-  }, [projectId]);
+  }, [projectId, projects]);
 
   const onOpen = (props: boolean) => {
     setIsOpen(props);

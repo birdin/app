@@ -69,8 +69,7 @@ const ProjectHomepage = () => {
                 </p>
                 <div className="section-container">
                   <ul className="section-task-list">{li}</ul>
-                  <Link to={`/project/${id}/tasks`}>Tasks</Link>
-                  <Link to={`/project/${id}/edit`}>Edit</Link>
+                  <Link to={`/project/${id}/tasks`} className="read-more-btn">Tasks</Link>
                 </div>
               </div>
               <div className="section-wrapper">

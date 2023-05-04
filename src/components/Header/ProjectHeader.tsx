@@ -2,12 +2,14 @@ import { useContext } from "react";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { GlobalContext } from "../../context/GlobalContext";
 import { ProjectPlaceholder } from "../Placeholder";
+
 const ProjectHeader = () => {
-  const { state } = useContext(GlobalContext);
+  const { state, projects } = useContext(GlobalContext);
   const project = state.user.project;
 
+  //const projectResult = projects.find((item) => item.id == project.id.toString());
+  //console.log("Project header list", projectResult);
   console.log("Project header", project);
-
 
   return (
     <div className="wide-container">

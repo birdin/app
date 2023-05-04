@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+
 import { useInput } from "../../hooks/useInput";
 
 type Props = {
@@ -7,10 +8,11 @@ type Props = {
 };
 
 const ProjectEditForm = ({ project, editProject }: Props) => {
-  const { name, label, id, description } = project;
+  const { name, label, id, description, img} = project;
 
   const nameInput = useInput("text", name);
   const descriptionInput = useInput("text", description);
+  const logoInput = useInput("text", img);
 
   const update = (e: any) => {
     e.preventDefault();
@@ -18,7 +20,8 @@ const ProjectEditForm = ({ project, editProject }: Props) => {
         name: nameInput.value,
         description: descriptionInput.value,
         label: nameInput.value.slice(0, 2),
-        id: id
+        id: id,
+        img: logoInput.value,
     });
     toast.success("Project updated successfully");
   };
@@ -36,6 +39,7 @@ const ProjectEditForm = ({ project, editProject }: Props) => {
           id="projectDescription"
           {...descriptionInput}
         />
+        <input name="logo" id="logo" {...logoInput} />
       </div>
       <div className="form-group">
         <label htmlFor="projectDueDate">Project Due Date</label>
