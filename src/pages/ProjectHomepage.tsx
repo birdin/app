@@ -92,7 +92,7 @@ const ProjectHomepage = () => {
                   ) : (
                     <p>No notes</p>
                   )}
-                  <Link to={`/project/${id}/notes`}>Ver todas</Link>
+                  <Link to={`/project/${id}/notes`} className="read-more-btn">Ver todas</Link>
                 </div>
               </div>
             </div>
