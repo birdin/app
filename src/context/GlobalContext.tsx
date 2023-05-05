@@ -3,6 +3,18 @@ import { createContext, useEffect, useState, useReducer } from "react";
 import { initialState } from "./data/defaultData";
 import { isValidURL } from "../utils/validateURL";
 
+type TasksType = {
+  id: string;
+  title: string;
+  description: string;
+  dueDate: string;
+  status: string;
+  label: string;
+  img: string;
+  project_id: string;
+}
+
+
 export const GlobalContext = createContext({
   state: initialState,
   modal: {
@@ -10,7 +22,7 @@ export const GlobalContext = createContext({
     onOpen: (props: boolean) => {},
   },
   addData: (task: any) => {},
-  data: { columns: {}, columnOrder: "", tasks:{}, projectID: "" },
+  data: { columns: {}, columnOrder: "", tasks:[], projectID: "" },
   setData: (props: any) => {},
   getTask: (id: string) => {},
   projects: [{ name: "", label: "", id: "", description: "" }],

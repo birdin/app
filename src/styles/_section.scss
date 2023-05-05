@@ -18,6 +18,10 @@
 
 .section-container {
   //background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
   background-color: #f7f7f7;
   padding: 1rem;
   @media (min-width: $sm) {
@@ -88,4 +92,46 @@
 .project-list-page__section {
   overflow: hidden;
   height: calc(100vh - 45px);
+}
+
+.report-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e7e7e7;
+  margin-bottom: 1rem;
+  //border-top: 1px solid #e7e7e7;
+  margin-top: 15px;
+  margin-right: 0;
+}
+
+.report-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.report-card__title {
+  margin-bottom: 4px;
+  color: #afafaf;
+}
+
+.report-card__data {
+  font-size: 15px;
+  margin-top: 0;
+  color: #585858;
+  font-weight: 500;
+}
+
+.report-container-members {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
 }

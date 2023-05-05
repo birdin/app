@@ -73,6 +73,10 @@
     grid-gap: 3;
     grid-template-columns: 1fr 2fr 2fr;
   }
+  @media (min-width: 1500px) {
+    grid-gap: 3;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+  }
 
 }
 

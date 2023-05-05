@@ -6,7 +6,11 @@ import { Navbar } from "../components/Navbar";
 import { GlobalContext } from "../context/GlobalContext";
 import RouterPage from "../hoc/RouterPage";
 import { AsideNav } from "../components/Aside";
-import { QuickstartSection } from "../components/Section";
+import { QuickstartSection, ReportSection } from "../components/Section";
+import {
+  VoidTaskPlaceholder,
+  VoidNotesPlaceholder,
+} from "../components/Placeholder";
 
 type Note = {
   id: string;
@@ -29,10 +33,10 @@ const ProjectHomepage = () => {
     }
   }
 
-  for(let i = keys.length - 1; i>= (keys.length - 5) && i >= 0; --i) {
+  for (let i = keys.length - 1; i >= keys.length - 5 && i >= 0; --i) {
     const key = keys[i];
 
-    if(!key) {
+    if (!key) {
       continue;
     }
 
@@ -45,6 +49,8 @@ const ProjectHomepage = () => {
     );
   }
 
+  console.log("Note", note);
+
   return (
     <RouterPage>
       <Navbar />
@@ -52,6 +58,9 @@ const ProjectHomepage = () => {
         <AsideNav id={id} page="home" />
         <div className="section-container__wrapper">
           <ProjectHeader />
+
+          <ReportSection />
+
           <div className="fluid-container">
             <div className="grid-homepage">
               <div className="section-wrapper">
@@ -68,8 +77,18 @@ const ProjectHomepage = () => {
                   List of the last tasks
                 </p>
                 <div className="section-container">
-                  <ul className="section-task-list">{li}</ul>
-                  <Link to={`/project/${id}/tasks`} className="read-more-btn">Tasks</Link>
+                  {li.length > 0 && (
+                    <>
+                      <ul className="section-task-list">{li}</ul>
+                      <Link
+                        to={`/project/${id}/tasks`}
+                        className="read-more-btn"
+                      >
+                        Tasks
+                      </Link>
+                    </>
+                  )}
+                  {li != null && li.length === 0 && <VoidTaskPlaceholder />}
                 </div>
               </div>
               <div className="section-wrapper">
@@ -81,17 +100,26 @@ const ProjectHomepage = () => {
                   Notes and importan information
                 </p>
                 <div className="section-container">
-                  {note ? (
-                    <div className="section--notes-container">
-                      <h3>{note.title}</h3>
-                      <div
-                        dangerouslySetInnerHTML={{ __html: note?.content ? note?.content : '' }}
-                      ></div>
-                    </div>
+                  {note.id != null ? (
+                    <>
+                      <div className="section--notes-container">
+                        <h3>{note.title}</h3>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: note?.content ? note?.content : "",
+                          }}
+                        ></div>
+                      </div>
+                      <Link
+                        to={`/project/${id}/notes`}
+                        className="read-more-btn"
+                      >
+                        Ver todas
+                      </Link>
+                    </>
                   ) : (
-                    <p>No notes</p>
+                    <VoidNotesPlaceholder />
                   )}
-                  <Link to={`/project/${id}/notes`} className="read-more-btn">Ver todas</Link>
                 </div>
               </div>
             </div>

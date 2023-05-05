@@ -1,3 +1,4 @@
 import QuickstartSection from "./QuickstartSection";
+import ReportSection from "./ReportSection";
 
-export { QuickstartSection };
+export { QuickstartSection, ReportSection };
