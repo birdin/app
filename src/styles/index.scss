@@ -21,10 +21,14 @@
   font-family: "Inter", sans-serif;
 }
 
+p {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 h1, h2, h3 {
   color: #434343;
 }
-
 
 h2 {
   font-size: 1.6rem;

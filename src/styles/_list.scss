@@ -77,6 +77,8 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .notes-list__title-date {
@@ -89,5 +91,4 @@
   overflow: scroll;
   padding-right: 3rem;
   height: 100%;
-
 }
