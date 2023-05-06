@@ -11,6 +11,7 @@ import {
   VoidTaskPlaceholder,
   VoidNotesPlaceholder,
 } from "../components/Placeholder";
+import Breadcrumb from "../components/Breadcrumb/Breadcrumb";
 
 type Note = {
   id: string;
@@ -25,6 +26,7 @@ const ProjectHomepage = () => {
 
   const keys = data.tasks !== undefined ? Object.keys(data.tasks) : [""];
   const li = [];
+
   let note: Partial<Note> = {};
   for (let i = 0; i < notes.length; i++) {
     if (notes[i].project_id === id) {
@@ -57,6 +59,9 @@ const ProjectHomepage = () => {
       <main className="dashboard-layout">
         <AsideNav id={id} page="home" />
         <div className="section-container__wrapper">
+          
+          <Breadcrumb name="Project" id={id?.toString()}/>
+
           <ProjectHeader />
 
           <ReportSection />
