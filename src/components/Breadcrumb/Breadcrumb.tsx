@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { FcFolder } from "react-icons/fc";
 
 type Props = {
     name: string | undefined;
@@ -13,7 +12,7 @@ const Breadcrumb = ({name, id, page = 'Homepage'}: Props) => {
     <div className='wide-container breadcrumb-container {
         '>
         <Link to={`/project/${id}`}>
-            <FcFolder/> { name }
+           { name }
         </Link>
         <span>/</span>
         <span> {page}</span>
