@@ -17,7 +17,7 @@ const DashboardLayout = ({children, id, page} : Props) => {
         <main className="dashboard-layout">
           <AsideNav id={id} page={page}/>        
           <div className="section-container__wrapper">
-            <Breadcrumb name={'Project'} id={id?.toString()}/>
+            <Breadcrumb name={'Project'} id={id?.toString()} page={undefined}/>
             <ProjectHeader />
             {children}
           </div>

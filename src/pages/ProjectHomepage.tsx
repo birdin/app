@@ -60,7 +60,7 @@ const ProjectHomepage = () => {
         <AsideNav id={id} page="home" />
         <div className="section-container__wrapper">
           
-          <Breadcrumb name="Project" id={id?.toString()}/>
+          <Breadcrumb name="Project" id={id?.toString()} page={undefined}/>
 
           <ProjectHeader />
 

@@ -9,6 +9,7 @@ import NotesEditor from "../features/Notes";
 import { AsideNav } from "../components/Aside";
 import NotesList from "../features/Notes/component/NotesList";
 import NoteCard from "../features/Notes/component/NoteCard";
+import { NotePlaceholder } from "../components/Placeholder";
 
 const Notes = () => {
   const { notes, dispatchNotes } = useContext(GlobalContext);
@@ -38,6 +39,7 @@ const Notes = () => {
 
   const deleteNote = (newNote: any) => {
     dispatchNotes({ type: "REMOVE_NOTE", payload: newNote.id });
+    setNote(notes.filter((note) => note.project_id === id).reverse()[0] )
   };
 
   const newNote = {
@@ -102,6 +104,9 @@ const Notes = () => {
                 key={`${note.id}-editor`}
               />
             )}
+
+            { (!note) && (
+              <NotePlaceholder/>)}
           </div>
         </div>
       </main>
