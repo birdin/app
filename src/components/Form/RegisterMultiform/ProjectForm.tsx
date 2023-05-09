@@ -67,7 +67,7 @@ const ProjectForm = () => {
 
   return (
     <div>
-      <form onSubmit={onSubmit} className="sm-form m-t-2" autoComplete="off">
+      <form onSubmit={onSubmit} className="sm-form m-t-2 show-appear" autoComplete="off">
         <FormProjectHeader />
         <StepIndicator length={NUMBER_OF_STEPS} currentStep={stepCount} />
         {step}
