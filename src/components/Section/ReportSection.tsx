@@ -16,7 +16,7 @@ const ReportSection = () => {
             <FiSun/>
             {dateStr}
         </div>
-        <div className="report-container">
+        <div style={{display: 'none'}} className="report-container">
           <div>
             <p className="report-card__title">Total of tasks</p>
             <p className="report-card__data">20 tasks</p>

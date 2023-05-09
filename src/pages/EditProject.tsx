@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
+
 import { ProjectEditForm } from "../components/Form";
 import { Navbar } from "../components/Navbar";
 import { GlobalContext } from "../context/GlobalContext";
@@ -17,7 +18,10 @@ const EditProject = () => {
   return (
     <>
       <Navbar />
-      <ProjectEditForm project={project} editProject={onEdit} />
+      
+      <div className="container">
+        <ProjectEditForm project={project} editProject={onEdit} />
+      </div>
     </>
   );
 };
