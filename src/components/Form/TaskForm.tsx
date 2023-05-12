@@ -73,7 +73,7 @@ const TaskForm = () => {
         <div className="form-header__title">
           <span>
             <RiAddFill />
-            La Forma
+            Project
           </span>
           <span>New Task</span>
         </div>

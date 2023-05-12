@@ -31,3 +31,30 @@
     color: #848484;
 }
 
+.finish-form-component {
+    text-align: center;
+    svg {
+        margin: 0 auto;
+        font-size: 80px;
+        color: #abc3b0;
+        animation-name: spin;
+        animation-duration: 500ms;
+        animation-timing-function: linear; 
+        //animation-iteration-count: infinite;
+    }
+    p {
+        width: 230px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        color: #777777;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
