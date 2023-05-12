@@ -12,6 +12,7 @@ import {
   VoidNotesPlaceholder,
 } from "../components/Placeholder";
 import Breadcrumb from "../components/Breadcrumb/Breadcrumb";
+import { TaskWidget } from "../components/Dashboard";
 
 type Note = {
   id: string;
@@ -81,6 +82,9 @@ const ProjectHomepage = () => {
                 <p className="section-header-subtitle">
                   List of the last tasks
                 </p>
+
+                <TaskWidget li={li} id={id}/>
+                {/*
                 <div className="section-container">
                   {li.length > 0 && (
                     <>
@@ -95,6 +99,7 @@ const ProjectHomepage = () => {
                   )}
                   {li != null && li.length === 0 && <VoidTaskPlaceholder />}
                 </div>
+                  */}
               </div>
               <div className="section-wrapper">
                 <h2 className="section-header-title">
