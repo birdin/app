@@ -22,7 +22,7 @@ export const GlobalContext = createContext({
     onOpen: (props: boolean) => {},
   },
   addData: (task: any) => {},
-  data: { columns: {}, columnOrder: "", tasks:[], projectID: "" },
+  data: { columns: {}, columnOrder: [], tasks:[], projectID: "" },
   setData: (props: any) => {},
   getTask: (id: string) => {},
   projects: [{ name: "", label: "", id: "", description: "" }],
