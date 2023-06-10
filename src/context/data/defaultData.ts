@@ -102,7 +102,7 @@ export const ProjectList = [
 export const initialState = {
   user: {
     id: 1,
-    name: "Carlos",
+    name: "Guest Account",
     email: "",
     avatar: "https://i.pravatar.cc/150?img=2",
     project:
